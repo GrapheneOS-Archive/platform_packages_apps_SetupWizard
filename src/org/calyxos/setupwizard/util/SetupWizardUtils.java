@@ -38,6 +38,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -61,8 +62,6 @@ import org.calyxos.setupwizard.SetupWizardApp;
 import org.calyxos.setupwizard.SimMissingActivity;
 import org.calyxos.setupwizard.WifiSetupActivity;
 import org.calyxos.setupwizard.wizardmanager.WizardManager;
-
-import org.lineageos.internal.util.PackageManagerUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -169,8 +168,8 @@ public class SetupWizardUtils {
     }
 
     public static boolean hasGMS(Context context) {
-        if (PackageManagerUtils.isAppInstalled(context, GMS_PACKAGE) &&
-                PackageManagerUtils.isAppInstalled(context, GMS_SUW_PACKAGE)) {
+        if (isAppInstalled(context, GMS_PACKAGE) &&
+                isAppInstalled(context, GMS_SUW_PACKAGE)) {
             PackageManager packageManager = context.getPackageManager();
             if (LOGV) {
                 Log.v(TAG, GMS_SUW_PACKAGE + " state = " +
@@ -364,5 +363,36 @@ public class SetupWizardUtils {
 
     public static long getBuildDateTimestamp() {
         return SystemProperties.getLong(PROP_BUILD_DATE, 0);
+    }
+
+    /**
+     * Checks whether a given package exists
+     *
+     * @param context
+     * @param packageName
+     * @return true if the package exists
+     */
+    public static boolean isAppInstalled(final Context context, final String packageName) {
+        return getApplicationInfo(context, packageName, 0) != null;
+    }
+
+    /**
+     * Get the ApplicationInfo of a package
+     *
+     * @param context
+     * @param packageName
+     * @param flags
+     * @return null if the package cannot be found or the ApplicationInfo is null
+     */
+    public static ApplicationInfo getApplicationInfo(final Context context,
+                                                     final String packageName, final int flags) {
+        final PackageManager packageManager = context.getPackageManager();
+        ApplicationInfo info;
+        try {
+            info = packageManager.getApplicationInfo(packageName, flags);
+        } catch (PackageManager.NameNotFoundException e) {
+            info = null;
+        }
+        return info;
     }
 }
