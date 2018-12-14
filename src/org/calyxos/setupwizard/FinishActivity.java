@@ -43,8 +43,6 @@ import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import org.calyxos.setupwizard.util.EnableAccessibilityController;
 
-import lineageos.providers.LineageSettings;
-
 public class FinishActivity extends BaseSetupWizardActivity {
 
     public static final String TAG = FinishActivity.class.getSimpleName();
@@ -168,8 +166,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
         if (mEnableAccessibilityController != null) {
             mEnableAccessibilityController.onDestroy();
         }
-        handleEnableMetrics(mSetupWizardApp);
-        handleNavKeys(mSetupWizardApp);
         final WallpaperManager wallpaperManager =
                 WallpaperManager.getInstance(mSetupWizardApp);
         wallpaperManager.forgetLoadedWallpaper();
@@ -177,48 +173,5 @@ public class FinishActivity extends BaseSetupWizardActivity {
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(),
                 Activity.RESULT_OK);
         startActivityForResult(intent, NEXT_REQUEST);
-    }
-
-    private static void handleEnableMetrics(SetupWizardApp setupWizardApp) {
-        Bundle privacyData = setupWizardApp.getSettingsBundle();
-        if (privacyData != null
-                && privacyData.containsKey(KEY_SEND_METRICS)) {
-            LineageSettings.Secure.putInt(setupWizardApp.getContentResolver(),
-                    LineageSettings.Secure.STATS_COLLECTION, privacyData.getBoolean(KEY_SEND_METRICS)
-                            ? 1 : 0);
-        }
-    }
-
-    private static void handleNavKeys(SetupWizardApp setupWizardApp) {
-        if (setupWizardApp.getSettingsBundle().containsKey(DISABLE_NAV_KEYS)) {
-            writeDisableNavkeysOption(setupWizardApp,
-                    setupWizardApp.getSettingsBundle().getBoolean(DISABLE_NAV_KEYS));
-        }
-    }
-
-    private static void writeDisableNavkeysOption(Context context, boolean enabled) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-        final boolean virtualKeysEnabled = LineageSettings.System.getIntForUser(
-                    context.getContentResolver(), LineageSettings.System.FORCE_SHOW_NAVBAR, 0,
-                    UserHandle.USER_CURRENT) != 0;
-        if (enabled != virtualKeysEnabled) {
-            LineageSettings.System.putIntForUser(context.getContentResolver(),
-                    LineageSettings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0,
-                    UserHandle.USER_CURRENT);
-        }
-
-        /* Save/restore button timeouts to disable them in softkey mode */
-        if (enabled) {
-            LineageSettings.Secure.putInt(context.getContentResolver(),
-                    LineageSettings.Secure.BUTTON_BRIGHTNESS, 0);
-        } else {
-            int currentBrightness = LineageSettings.Secure.getInt(context.getContentResolver(),
-                    LineageSettings.Secure.BUTTON_BRIGHTNESS, 100);
-            int oldBright = prefs.getInt(KEY_BUTTON_BACKLIGHT,
-                    currentBrightness);
-            LineageSettings.Secure.putInt(context.getContentResolver(),
-                    LineageSettings.Secure.BUTTON_BRIGHTNESS, oldBright);
-        }
     }
 }
