@@ -15,4 +15,6 @@
      limitations under the License.
 -->
 <resources>
+    <string name="calyx_wizard_script_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script</string>
+    <string name="calyx_wizard_script_user_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script_user</string>
 </resources>
