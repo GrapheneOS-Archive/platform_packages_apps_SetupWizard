@@ -20,8 +20,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     setupdesign
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    libphonenumber \
-    org.lineageos.platform.internal
+    libphonenumber
 
 LOCAL_JAVA_LIBRARIES := \
     telephony-common
