@@ -21,6 +21,7 @@
 
     <string name="calyx_wizard_script_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script</string>
     <string name="calyx_wizard_script_user_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script_user</string>
+    <string name="calyx_fdroid_repo_location" translatable="false">/system/fdroid/calyx/repo</string>
 
     <string name="activity_label_empty" />
 
@@ -101,5 +102,10 @@
     <string name="lockscreen_setup_title" product="default">Protect your phone</string>
     <string name="lockscreen_setup_summary"><b>Protect this device</b> and require a PIN, pattern, or password to unlock the screen</string>
     <string name="lockscreen_setup_screen_lock_setup">Set up</string>
+
+    <!-- app install -->
+    <string name="install_apps_title">Review Additional Apps</string>
+    <string name="install_apps_subtitle">You can still install them later as well.</string>
+    <string name="install_apps_select_all">All of the following apps</string>
 
 </resources>

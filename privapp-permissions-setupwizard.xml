@@ -28,6 +28,7 @@
         <permission name="android.permission.CHANGE_COMPONENT_ENABLED_STATE"/>
         <permission name="android.permission.BACKUP"/>
         <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+        <permission name="android.permission.INSTALL_PACKAGES"/>
     </privapp-permissions>
 
 </permissions>
