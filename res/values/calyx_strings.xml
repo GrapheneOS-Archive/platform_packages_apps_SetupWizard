@@ -17,4 +17,10 @@
 <resources>
     <string name="calyx_wizard_script_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script</string>
     <string name="calyx_wizard_script_user_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script_user</string>
+
+    <!-- App install -->
+    <string name="calyx_fdroid_repo_location" translatable="false">/system/fdroid/calyx/repo</string>
+    <string name="install_apps_title">Review Additional Apps</string>
+    <string name="install_apps_subtitle">You can still install them later as well.</string>
+    <string name="install_apps_select_all">All of the following apps</string>
 </resources>
