@@ -9,13 +9,12 @@
     tools:context=".apps.InstallAppsActivity">
 
     <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/page_title_height"
+        android:layout_height="@dimen/page_title_height"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo"
+        android:src="@drawable/calyx_logo"
         tools:ignore="ContentDescription" />
 
     <TextView
