@@ -38,9 +38,9 @@ class AppViewHolder extends ViewHolder {
     AppViewHolder(@NonNull View v, AppItemListener listener) {
         super(v);
         this.listener = listener;
-        icon = (ImageView) v.findViewById(R.id.icon);
-        name = (TextView) v.findViewById(R.id.name);
-        checkBox = (CheckBox) v.findViewById(R.id.checkBox);
+        icon = v.findViewById(R.id.icon);
+        name = v.findViewById(R.id.name);
+        checkBox = v.findViewById(R.id.checkBox);
         v.setOnClickListener(view -> checkBox.toggle());
     }
 
