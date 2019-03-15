@@ -54,11 +54,11 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
 
         setNextText(R.string.next);
 
-        list = (RecyclerView) findViewById(R.id.list);
+        list = findViewById(R.id.list);
         adapter = new AppAdapter(this);
         list.setAdapter(adapter);
 
-        checkBoxAll = (CheckBox) findViewById(R.id.checkBoxAll);
+        checkBoxAll = findViewById(R.id.checkBoxAll);
         checkBoxAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) adapter.setAllChecked(true);
             else if (!appUnchecked) adapter.setAllChecked(false);
