@@ -62,6 +62,10 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_LOCKSCREEN_SETTINGS;end" id="lockscreen_settings">
+        <result wizard:action="microg" />
+    </WizardAction>
+
+    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_MICROG;end" id="microg">
         <result wizard:action="install_apps" />
     </WizardAction>
 
