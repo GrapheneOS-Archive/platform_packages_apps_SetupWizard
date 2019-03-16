@@ -82,6 +82,17 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
     }
 
     @Override
+    protected int getTitleResId() {
+        return R.string.install_apps_title;
+    }
+
+
+    @Override
+    protected int getIconResId() {
+        return R.drawable.fdroid_logo;
+    }
+
+    @Override
     public void onItemUnchecked() {
         if (checkBoxAll.isChecked()) {
             appUnchecked = true;

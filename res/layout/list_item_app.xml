@@ -5,20 +5,21 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingStart="16dp"
     android:paddingTop="16dp"
-    android:paddingEnd="16dp">
+    android:paddingLeft="@dimen/content_margin_left"
+    android:paddingRight="@dimen/data_switch_margin_right">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="16dp">
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:scaleType="centerInside"
             tools:ignore="ContentDescription"
             tools:src="@drawable/ic_launcher_background" />
@@ -27,10 +28,9 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:paddingLeft="@dimen/content_margin_left"
             tools:text="This is an app that can have quite a long name which can even span three or more lines" />
 
         <CheckBox
@@ -41,11 +41,6 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/divider" />
+    <include layout="@layout/divider" />
 
 </LinearLayout>
