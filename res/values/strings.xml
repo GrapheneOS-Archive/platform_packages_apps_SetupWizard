@@ -110,8 +110,8 @@
     <string name="lockscreen_setup_screen_lock_setup">Set up</string>
 
     <!-- app install -->
-    <string name="install_apps_title">Review Additional Apps</string>
-    <string name="install_apps_subtitle">You can still install them later as well.</string>
+    <string name="install_apps_title">Additional Apps</string>
+    <string name="install_apps_subtitle"><b>Review additional apps.</b> You can install them later as well.</string>
     <string name="install_apps_select_all">All of the following apps</string>
 
 </resources>
