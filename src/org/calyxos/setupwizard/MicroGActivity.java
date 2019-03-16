@@ -58,6 +58,16 @@ public class MicroGActivity extends BaseSetupWizardActivity {
     }
 
     @Override
+    protected int getTitleResId() {
+        return R.string.microg_title;
+    }
+
+    @Override
+    protected int getIconResId() {
+        return R.drawable.microg_icon;
+    }
+
+    @Override
     public void onNextPressed() {
         boolean enabled = enableSwitch.isChecked();
         for (String packageId : MICROG_PACKAGES) {
