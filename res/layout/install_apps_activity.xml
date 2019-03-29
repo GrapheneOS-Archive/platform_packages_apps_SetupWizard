@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/PageContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
@@ -10,74 +11,55 @@
 
     <include layout="@layout/header_condensed" />
 
-    <FrameLayout android:id="@+id/page"
-                 android:layout_width="match_parent"
-                 android:layout_height="0dp"
-                 android:layout_weight="1">
+    <TextView
+        style="@style/PageSummaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/content_margin_left"
+        android:paddingEnd="@dimen/content_margin_right"
+        android:paddingTop="@dimen/summary_margin_bottom"
+        android:paddingBottom="@dimen/summary_margin_bottom"
+        android:text="@string/install_apps_subtitle"
+        android:textSize="15sp" />
 
-        <ScrollView android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true">
+    <include layout="@layout/divider" />
 
-            <LinearLayout
-                android:id="@+id/page_view"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/PageContent">
+    <LinearLayout
+        android:id="@+id/allLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/content_margin_left"
+        android:paddingTop="16dp"
+        android:paddingEnd="@dimen/data_switch_margin_right"
+        android:paddingBottom="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/content_margin_left"
-                    android:paddingRight="@dimen/content_margin_right"
-                    android:paddingBottom="@dimen/summary_margin_bottom"
-                    android:text="@string/install_apps_subtitle"
-                    android:textSize="15sp"
-                    style="@style/PageSummaryText" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/install_apps_select_all"
+            android:textSize="15sp" />
 
-                <include layout="@layout/divider" />
+        <CheckBox
+            android:id="@+id/checkBoxAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
 
-                <LinearLayout
-                    android:id="@+id/allLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"
-                    android:paddingLeft="@dimen/content_margin_left"
-                    android:paddingRight="@dimen/data_switch_margin_right">
+    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/install_apps_select_all"
-                        android:textSize="15sp" />
+    <include layout="@layout/divider" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true" />
-
-                </LinearLayout>
-
-                <include layout="@layout/divider" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/list_item_app" />
-
-            </LinearLayout>
-        </ScrollView>
-    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/list_item_app" />
 
     <com.google.android.setupdesign.view.NavigationBar
         android:id="@+id/navigation_bar"

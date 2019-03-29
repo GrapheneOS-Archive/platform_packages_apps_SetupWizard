@@ -26,9 +26,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.calyxos.setupwizard.BaseSetupWizardActivity;
 import org.calyxos.setupwizard.R;
 import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
@@ -36,6 +35,7 @@ import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
 import java.io.File;
 import java.io.FilenameFilter;
 
+import static java.util.Objects.requireNonNull;
 import static org.calyxos.setupwizard.apps.AppInstallerService.PACKAGE_PATHS;
 
 public class InstallAppsActivity extends BaseSetupWizardActivity implements AppItemListener {
@@ -103,6 +103,14 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
 
     @Override
     public void onNextPressed() {
+        // scroll to the end, if the user didn't
+        LinearLayoutManager layoutManager = (LinearLayoutManager) requireNonNull(list.getLayoutManager());
+        int lastPosition = adapter.getItemCount() - 1;
+        if (layoutManager.findLastCompletelyVisibleItemPosition() != lastPosition) {
+            list.smoothScrollToPosition(lastPosition);
+            return;
+        }
+
         Intent i = new Intent(this, AppInstallerService.class);
         i.putStringArrayListExtra(PACKAGE_PATHS, adapter.getSelectedPackageIdPaths());
         startForegroundService(i);
