@@ -6,8 +6,8 @@
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     android:paddingTop="16dp"
-    android:paddingLeft="@dimen/content_margin_left"
-    android:paddingRight="@dimen/data_switch_margin_right">
+    android:paddingStart="@dimen/content_margin_left"
+    android:paddingEnd="@dimen/data_switch_margin_right">
 
     <LinearLayout
         android:layout_width="match_parent"
