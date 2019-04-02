@@ -50,7 +50,7 @@ public class SetupWizardTestActivity extends Activity {
         Settings.Secure.putInt(getContentResolver(), "user_setup_complete", 0);
         SetupWizardUtils.resetComponentSets(this, GET_ACTIVITIES |
                 GET_RECEIVERS | GET_SERVICES | MATCH_DISABLED_COMPONENTS);
-        forgetAllWifi();
+//        forgetAllWifi();  // annoying when testing with ADB via WiFi
         Intent setupIntent = new Intent("android.intent.action.MAIN")
                 .addCategory("android.intent.category.HOME")
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
