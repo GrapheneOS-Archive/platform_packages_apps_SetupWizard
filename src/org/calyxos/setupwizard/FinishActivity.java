@@ -17,24 +17,18 @@
 
 package org.calyxos.setupwizard;
 
-import static org.calyxos.setupwizard.SetupWizardApp.DISABLE_NAV_KEYS;
-import static org.calyxos.setupwizard.SetupWizardApp.KEY_BUTTON_BACKLIGHT;
-import static org.calyxos.setupwizard.SetupWizardApp.KEY_SEND_METRICS;
+import static org.calyxos.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
 import static org.calyxos.setupwizard.SetupWizardApp.LOGV;
 
 import android.animation.Animator;
 import android.app.Activity;
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.UserHandle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.ImageView;
@@ -42,6 +36,9 @@ import android.widget.ImageView;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import org.calyxos.setupwizard.util.EnableAccessibilityController;
+
+import static android.os.Binder.getCallingUserHandle;
+import static org.calyxos.setupwizard.Manifest.permission.FINISH_SETUP;
 
 public class FinishActivity extends BaseSetupWizardActivity {
 
@@ -101,6 +98,10 @@ public class FinishActivity extends BaseSetupWizardActivity {
     }
 
     private void startFinishSequence() {
+        Intent i = new Intent(ACTION_SETUP_COMPLETE);
+        i.setPackage(getPackageName());
+        sendBroadcastAsUser(i, getCallingUserHandle(), FINISH_SETUP);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         hideBackButton();
         hideNextButton();
