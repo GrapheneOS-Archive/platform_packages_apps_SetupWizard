@@ -46,6 +46,9 @@
         android:name="calyxos.permission.FINISH_SETUP"
         android:protectionLevel="signatureOrSystem" />
 
+    <protected-broadcast android:name="org.calyxos.setupwizard.CALYX_SETUP_COMPLETE"
+                         android:permission="calyxos.permission.FINISH_SETUP"/>
+
     <protected-broadcast android:name="org.calyxos.setupwizard.SETUP_FINISHED"
                          android:permission="calyxos.permission.FINISH_SETUP"/>
 
