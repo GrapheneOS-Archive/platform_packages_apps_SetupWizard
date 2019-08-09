@@ -106,13 +106,13 @@ class AppAdapter extends Adapter<AppViewHolder> {
         }
     }
 
-    ArrayList<String> getSelectedPackageIdPaths() {
-        ArrayList<String> packageIds = new ArrayList<>();
+    ArrayList<String> getSelectedPackageNameAPKs() {
+        ArrayList<String> apkNames = new ArrayList<>();
         for (int i = 0; i < items.size(); i++) {
             AppItem item = items.get(i);
-            if (item.checked) packageIds.add(item.path);
+            if (item.checked) apkNames.add(item.apkName);
         }
-        return packageIds;
+        return apkNames;
     }
 
     interface AppItemListener {

@@ -19,26 +19,39 @@ package org.calyxos.setupwizard.apps;
 import android.annotation.Nullable;
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
+
 class AppItem {
 
     @Nullable
     final Drawable icon;
     @Nullable
     final CharSequence name;
-    final String packageId;
-    final String path;
-    boolean checked = true;
+    final String packageName;
+    final String apkName;
+    @Nullable
+    final ArrayList<String> categories;
+    @Nullable
+    final String description;
+    @Nullable
+    final String summary;
+    boolean checked;
 
-    AppItem(@Nullable Drawable icon, @Nullable CharSequence name, String packageId, String path) {
+    AppItem(@Nullable Drawable icon, @Nullable CharSequence name, String packageName, String apkName,
+        ArrayList<String> categories, String description, String summary, boolean checked) {
         this.icon = icon;
         this.name = name;
-        this.packageId = packageId;
-        this.path = path;
+        this.packageName = packageName;
+        this.apkName = apkName;
+        this.categories = categories;
+        this.description = description;
+        this.summary = summary;
+        this.checked = checked;
     }
 
     @Override
     public boolean equals(@Nullable Object o) {
-        return o instanceof AppItem && packageId.equals(((AppItem) o).packageId);
+        return o instanceof AppItem && packageName.equals(((AppItem) o).packageName);
     }
 
     boolean allEquals(AppItem o) {

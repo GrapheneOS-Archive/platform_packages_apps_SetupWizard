@@ -17,11 +17,8 @@
 package org.calyxos.setupwizard.apps;
 
 import android.annotation.Nullable;
-import android.annotation.WorkerThread;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,14 +30,17 @@ import org.calyxos.setupwizard.R;
 import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
 
 import java.io.File;
-import java.io.FilenameFilter;
 
 import static java.util.Objects.requireNonNull;
-import static org.calyxos.setupwizard.apps.AppInstallerService.PACKAGE_PATHS;
+import static org.calyxos.setupwizard.SetupWizardApp.FDROID_CATEGORY_DEFAULT;
+import static org.calyxos.setupwizard.apps.AppInstallerService.APKS;
+import static org.calyxos.setupwizard.apps.AppInstallerService.PATH;
 
 public class InstallAppsActivity extends BaseSetupWizardActivity implements AppItemListener {
 
     public static final String TAG = InstallAppsActivity.class.getSimpleName();
+
+    private static String path;
 
     private RecyclerView list;
     private AppAdapter adapter;
@@ -67,6 +67,8 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
         allLayout.setOnClickListener(v -> checkBoxAll.toggle());
 
         pm = getPackageManager();
+
+        path = getString(R.string.calyx_fdroid_repo_location);
 
         getApps();
     }
@@ -112,37 +114,24 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
         }
 
         Intent i = new Intent(this, AppInstallerService.class);
-        i.putStringArrayListExtra(PACKAGE_PATHS, adapter.getSelectedPackageIdPaths());
+        i.putExtra(PATH, path);
+        i.putStringArrayListExtra(APKS, adapter.getSelectedPackageNameAPKs());
         startForegroundService(i);
         super.onNextPressed();
     }
 
     private void getApps() {
-        String path = getString(R.string.calyx_fdroid_repo_location);
         File repoPath = new File(path);
         if (!repoPath.isDirectory()) {
             Log.e(TAG, "Local repo does not exist: " + repoPath);
             finish();
         }
-        FilenameFilter filter = (dir, name) -> name.endsWith(".apk");
         new Thread(() -> {
-            for (File apk : repoPath.listFiles(filter)) addApp(apk.getAbsolutePath());
+            FDroidRepo.loadFdroidJson(FDROID_CATEGORY_DEFAULT, path, list, adapter);
             list.post(() -> list.scrollToPosition(0));
         }).start();
     }
 
-    @WorkerThread
-    private void addApp(String pathToApk) {
-        PackageInfo packageInfo = pm.getPackageArchiveInfo(pathToApk, 0);
-        packageInfo.applicationInfo.sourceDir = pathToApk;
-        packageInfo.applicationInfo.publicSourceDir = pathToApk;
-
-        CharSequence label = pm.getApplicationLabel(packageInfo.applicationInfo);
-        Drawable logo = pm.getApplicationIcon(packageInfo.applicationInfo);
-        String packageId = packageInfo.packageName;
-
-        AppItem item = new AppItem(logo, label, packageId, pathToApk);
-        list.post(() -> adapter.addItem(item));
-    }
+    
 
 }
