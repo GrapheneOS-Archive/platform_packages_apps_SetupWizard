@@ -17,7 +17,6 @@
 
 package org.calyxos.setupwizard;
 
-
 import android.app.Application;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,7 +43,6 @@ public class SetupWizardApp extends Application {
     public static final String ACTION_NEXT = "com.android.wizard.NEXT";
     public static final String ACTION_LOAD = "com.android.wizard.LOAD";
 
-
     public static final String EXTRA_FIRST_RUN = "firstRun";
     public static final String EXTRA_ALLOW_SKIP = "allowSkip";
     public static final String EXTRA_AUTO_FINISH = "wifi_auto_finish_on_connect";
@@ -64,6 +62,9 @@ public class SetupWizardApp extends Application {
     public static final String KEY_SEND_METRICS = "send_metrics";
     public static final String DISABLE_NAV_KEYS = "disable_nav_keys";
     public static final String KEY_BUTTON_BACKLIGHT = "pre_navbar_button_backlight";
+
+    public static final String FDROID_CATEGORY_DEFAULT = "Default";
+    public static final String FDROID_CATEGORY_DEFAULT_BACKEND = "DefaultBackend";
 
     public static final int REQUEST_CODE_SETUP_WIFI = 0;
     public static final int REQUEST_CODE_SETUP_CAPTIVE_PORTAL= 4;

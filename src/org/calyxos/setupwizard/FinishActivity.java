@@ -54,7 +54,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
 
     private volatile boolean mIsFinishing = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
