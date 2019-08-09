@@ -32,6 +32,7 @@ class AppViewHolder extends ViewHolder {
 
     private final ImageView icon;
     private final TextView name;
+    private final TextView summary;
     private final CheckBox checkBox;
     private final AppItemListener listener;
 
@@ -40,6 +41,7 @@ class AppViewHolder extends ViewHolder {
         this.listener = listener;
         icon = v.findViewById(R.id.icon);
         name = v.findViewById(R.id.name);
+        summary = v.findViewById(R.id.summary);
         checkBox = v.findViewById(R.id.checkBox);
         v.setOnClickListener(view -> checkBox.toggle());
     }
@@ -47,6 +49,7 @@ class AppViewHolder extends ViewHolder {
     void bind(AppItem item) {
         icon.setImageDrawable(item.icon);
         name.setText(item.name);
+        summary.setText(item.summary);
         checkBox.setChecked(item.checked);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (!isChecked) listener.onItemUnchecked();

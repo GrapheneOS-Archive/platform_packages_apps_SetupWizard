@@ -14,23 +14,40 @@
  *  limitations under the License.
  */
 
-package org.calyxos.setupwizard;
+package org.calyxos.setupwizard.apps;
 
 import android.annotation.Nullable;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Switch;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import org.calyxos.setupwizard.BaseSetupWizardActivity;
+import org.calyxos.setupwizard.R;
+import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
+
+import java.io.File;
 
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+import static org.calyxos.setupwizard.SetupWizardApp.FDROID_CATEGORY_DEFAULT_BACKEND;
+import static org.calyxos.setupwizard.apps.AppInstallerService.APKS;
+import static org.calyxos.setupwizard.apps.AppInstallerService.PATH;
 
-public class MicroGActivity extends BaseSetupWizardActivity {
+public class MicroGActivity extends BaseSetupWizardActivity implements AppItemListener {
 
     public static final String TAG = MicroGActivity.class.getSimpleName();
     private static final String[] MICROG_PACKAGES = new String[]{
             "com.google.android.gms",
             "com.android.vending"
     };
+
+    private static String path;
+
+    private RecyclerView list;
+    private AppAdapter adapter;
 
     private PackageManager pm;
     private Switch enableSwitch;
@@ -45,6 +62,14 @@ public class MicroGActivity extends BaseSetupWizardActivity {
         findViewById(R.id.switchLayout).setOnClickListener(v -> enableSwitch.toggle());
 
         pm = getPackageManager();
+
+        // This list is not shown to the user for now.
+        list = findViewById(R.id.list);
+        adapter = new AppAdapter(this);
+        list.setAdapter(adapter);
+        path = getString(R.string.calyx_fdroid_repo_location);
+
+        getApps();
     }
 
     @Override
@@ -68,10 +93,21 @@ public class MicroGActivity extends BaseSetupWizardActivity {
     }
 
     @Override
+    public void onItemUnchecked() {
+        // Do nothing.
+    }
+
+    @Override
     public void onNextPressed() {
         boolean enabled = enableSwitch.isChecked();
         for (String packageId : MICROG_PACKAGES) {
             setAppEnabled(packageId, enabled);
+        }
+        if (enabled) {
+            Intent i = new Intent(this, AppInstallerService.class);
+            i.putExtra(PATH, path);
+            i.putStringArrayListExtra(APKS, adapter.getSelectedPackageNameAPKs());
+            startForegroundService(i);
         }
         super.onNextPressed();
     }
@@ -81,4 +117,15 @@ public class MicroGActivity extends BaseSetupWizardActivity {
         pm.setApplicationEnabledSetting(packageName, state, 0);
     }
 
+    private void getApps() {
+        File repoPath = new File(path);
+        if (!repoPath.isDirectory()) {
+            Log.e(TAG, "Local repo does not exist: " + repoPath);
+            finish();
+        }
+        new Thread(() -> {
+            FDroidRepo.loadFdroidJson(FDROID_CATEGORY_DEFAULT_BACKEND, path, list, adapter);
+            list.post(() -> list.scrollToPosition(0));
+        }).start();
+    }
 }

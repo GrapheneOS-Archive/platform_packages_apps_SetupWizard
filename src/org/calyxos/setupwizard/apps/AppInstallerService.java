@@ -33,7 +33,8 @@ import static java.util.Objects.requireNonNull;
 
 public class AppInstallerService extends IntentService {
 
-    static final String PACKAGE_PATHS = "packagePaths";
+    static final String APKS = "apks";
+    static final String PATH = "path";
 
     private static final String TAG = AppInstallerService.class.getSimpleName();
     private static final String CHANNEL_ID = "SetupWizard";
@@ -53,10 +54,11 @@ public class AppInstallerService extends IntentService {
     @Override
     protected void onHandleIntent(Intent i) {
         PackageInstaller28 packageInstaller = new PackageInstaller28(getApplicationContext());
-        ArrayList<String> packagePaths = i.getStringArrayListExtra(PACKAGE_PATHS);
-        for (String path : packagePaths) {
+        String path = i.getStringExtra(PATH);
+        ArrayList<String> apks = i.getStringArrayListExtra(APKS);
+        for (String apk : apks) {
             try {
-                packageInstaller.install(new File(path));
+                packageInstaller.install(new File(path + "/" + apk));
             } catch (IOException | SecurityException e) {
                 e.printStackTrace();
             }
