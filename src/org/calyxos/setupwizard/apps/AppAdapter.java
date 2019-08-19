@@ -115,6 +115,15 @@ class AppAdapter extends Adapter<AppViewHolder> {
         return apkNames;
     }
 
+    ArrayList<String> getSelectedPackageNames() {
+        ArrayList<String> pkgNames = new ArrayList<>();
+        for (int i = 0; i < items.size(); i++) {
+            AppItem item = items.get(i);
+            if (item.checked) pkgNames.add(item.packageName);
+        }
+        return pkgNames;
+    }
+
     interface AppItemListener {
         void onItemUnchecked();
     }

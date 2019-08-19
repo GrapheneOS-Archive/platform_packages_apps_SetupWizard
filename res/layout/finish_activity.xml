@@ -42,6 +42,23 @@
             android:gravity="center"
             android:padding="108dp"/>
 
+        <TextView
+            android:id="@+id/waiting_for_apps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/waiting_for_apps"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminateOnly="true"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_gravity="top"
+            android:visibility="gone"/>
+
         <com.google.android.setupdesign.view.NavigationBar
             android:id="@+id/navigation_bar"
             style="@style/SudNavBarTheme"
