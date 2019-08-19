@@ -36,6 +36,7 @@ public class SetupWizardApp extends Application {
 
     public static final String ACTION_SETUP_COMPLETE = "org.calyxos.setupwizard.CALYX_SETUP_COMPLETE";
     public static final String ACTION_FINISHED = "org.calyxos.setupwizard.SETUP_FINISHED";
+    public static final String ACTION_APPS_INSTALLED = "org.calyxos.setupwizard.CALYX_APPS_INSTALLED";
     public static final String ACTION_SETUP_WIFI = "android.net.wifi.PICK_WIFI_NETWORK";
     public static final String ACTION_SETUP_FINGERPRINT = "android.settings.FINGERPRINT_SETUP";
     public static final String ACTION_SETUP_LOCKSCREEN = "com.android.settings.SETUP_LOCK_SCREEN";
@@ -65,6 +66,7 @@ public class SetupWizardApp extends Application {
 
     public static final String FDROID_CATEGORY_DEFAULT = "Default";
     public static final String FDROID_CATEGORY_DEFAULT_BACKEND = "DefaultBackend";
+    public static final String PACKAGENAMES = "packageNames";
 
     public static final int REQUEST_CODE_SETUP_WIFI = 0;
     public static final int REQUEST_CODE_SETUP_CAPTIVE_PORTAL= 4;

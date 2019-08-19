@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2017 The Android Open Source Project
  * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,26 +24,36 @@ import static org.calyxos.setupwizard.SetupWizardApp.LOGV;
 import android.animation.Animator;
 import android.app.Activity;
 import android.app.WallpaperManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
+import org.calyxos.setupwizard.apps.AppInstallerService;
 import org.calyxos.setupwizard.util.EnableAccessibilityController;
 
 import static android.os.Binder.getCallingUserHandle;
 import static org.calyxos.setupwizard.Manifest.permission.FINISH_SETUP;
+import static org.calyxos.setupwizard.SetupWizardApp.ACTION_APPS_INSTALLED;
 
 public class FinishActivity extends BaseSetupWizardActivity {
 
     public static final String TAG = FinishActivity.class.getSimpleName();
+    public static final String DEFAULT_BROWSER = "com.duckduckgo.mobile.android";
 
     private ImageView mReveal;
 
@@ -53,6 +64,18 @@ public class FinishActivity extends BaseSetupWizardActivity {
     private final Handler mHandler = new Handler();
 
     private volatile boolean mIsFinishing = false;
+
+    private ProgressBar mProgressBar;
+    private TextView mWaitingForAppsText;
+
+    private final BroadcastReceiver packageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ACTION_APPS_INSTALLED.equals(intent.getAction())) {
+                afterAppsInstalled();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +88,28 @@ public class FinishActivity extends BaseSetupWizardActivity {
         mEnableAccessibilityController =
                 EnableAccessibilityController.getInstance(getApplicationContext());
         setNextText(R.string.start);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
+        mWaitingForAppsText = (TextView) findViewById(R.id.waiting_for_apps);
+        registerReceiver(packageReceiver, new IntentFilter(ACTION_APPS_INSTALLED));
+        if (AppInstallerService.areAllAppsInstalled()) {
+            afterAppsInstalled();
+        } else {
+            // Wait for all apps to be installed before allowing the user to proceed
+            setNextAllowed(false);
+            setBackAllowed(false);
+            if (!mProgressBar.isShown()) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mWaitingForAppsText.setVisibility(View.VISIBLE);
+                mProgressBar.startAnimation(
+                        AnimationUtils.loadAnimation(this, R.anim.translucent_enter));
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        unregisterReceiver(packageReceiver);
+        super.onDestroy();
     }
 
     @Override
@@ -173,5 +218,16 @@ public class FinishActivity extends BaseSetupWizardActivity {
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(),
                 Activity.RESULT_OK);
         startActivityForResult(intent, NEXT_REQUEST);
+    }
+
+    private void afterAppsInstalled() {
+        if (mProgressBar.isShown()) {
+            mProgressBar.startAnimation(
+                    AnimationUtils.loadAnimation(this, R.anim.translucent_exit));
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mWaitingForAppsText.setVisibility(View.INVISIBLE);
+        }
+        getPackageManager().setDefaultBrowserPackageNameAsUser(DEFAULT_BROWSER, getUserId());
+        setNextAllowed(true);
     }
 }
