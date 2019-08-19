@@ -33,6 +33,7 @@ import java.io.File;
 
 import static java.util.Objects.requireNonNull;
 import static org.calyxos.setupwizard.SetupWizardApp.FDROID_CATEGORY_DEFAULT;
+import static org.calyxos.setupwizard.SetupWizardApp.PACKAGENAMES;
 import static org.calyxos.setupwizard.apps.AppInstallerService.APKS;
 import static org.calyxos.setupwizard.apps.AppInstallerService.PATH;
 
@@ -53,6 +54,7 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
         super.onCreate(savedInstanceState);
 
         setNextText(R.string.next);
+        setBackAllowed(false);
 
         list = findViewById(R.id.list);
         adapter = new AppAdapter(this);
@@ -116,6 +118,7 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
         Intent i = new Intent(this, AppInstallerService.class);
         i.putExtra(PATH, path);
         i.putStringArrayListExtra(APKS, adapter.getSelectedPackageNameAPKs());
+        i.putStringArrayListExtra(PACKAGENAMES, adapter.getSelectedPackageNames());
         startForegroundService(i);
         super.onNextPressed();
     }
