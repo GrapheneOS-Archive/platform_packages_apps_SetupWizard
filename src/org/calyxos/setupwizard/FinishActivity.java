@@ -18,48 +18,29 @@
 
 package org.calyxos.setupwizard;
 
-import static org.calyxos.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
-import static org.calyxos.setupwizard.SetupWizardApp.LOGV;
-
 import android.animation.Animator;
 import android.app.Activity;
 import android.app.WallpaperManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import java.io.IOException;
-import java.io.File;
-
-import org.json.JSONException;
-
 import com.google.android.setupcompat.util.WizardManagerHelper;
-
-import org.calyxos.setupwizard.apps.AppInstallerService;
-import org.calyxos.setupwizard.apps.FDroidRepo;
 import org.calyxos.setupwizard.util.EnableAccessibilityController;
 
 import static android.os.Binder.getCallingUserHandle;
 import static org.calyxos.setupwizard.Manifest.permission.FINISH_SETUP;
-import static org.calyxos.setupwizard.SetupWizardApp.ACTION_APPS_INSTALLED;
+import static org.calyxos.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
+import static org.calyxos.setupwizard.SetupWizardApp.LOGV;
 
 public class FinishActivity extends BaseSetupWizardActivity {
 
     public static final String TAG = FinishActivity.class.getSimpleName();
-    public static final String DEFAULT_BROWSER = "com.duckduckgo.mobile.android";
 
     private ImageView mReveal;
 
@@ -71,20 +52,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
 
     private volatile boolean mIsFinishing = false;
 
-    private ProgressBar mProgressBar;
-    private TextView mWaitingForAppsText;
-
-    private String path;
-
-    private final BroadcastReceiver packageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (ACTION_APPS_INSTALLED.equals(intent.getAction())) {
-                afterAppsInstalled();
-            }
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,33 +59,10 @@ public class FinishActivity extends BaseSetupWizardActivity {
             logActivityState("onCreate savedInstanceState=" + savedInstanceState);
         }
         mSetupWizardApp = (SetupWizardApp) getApplication();
-        mReveal = (ImageView) findViewById(R.id.reveal);
+        mReveal = findViewById(R.id.reveal);
         mEnableAccessibilityController =
                 EnableAccessibilityController.getInstance(getApplicationContext());
         setNextText(R.string.start);
-        mProgressBar = (ProgressBar) findViewById(R.id.progress);
-        mWaitingForAppsText = (TextView) findViewById(R.id.waiting_for_apps);
-        registerReceiver(packageReceiver, new IntentFilter(ACTION_APPS_INSTALLED));
-        path = getString(R.string.calyx_fdroid_repo_location);
-        if (!shouldWeWaitForApps()) {
-            afterAppsInstalled();
-        } else {
-            // Wait for all apps to be installed before allowing the user to proceed
-            setNextAllowed(false);
-            setBackAllowed(false);
-            if (!mProgressBar.isShown()) {
-                mProgressBar.setVisibility(View.VISIBLE);
-                mWaitingForAppsText.setVisibility(View.VISIBLE);
-                mProgressBar.startAnimation(
-                        AnimationUtils.loadAnimation(this, R.anim.translucent_enter));
-            }
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        unregisterReceiver(packageReceiver);
-        super.onDestroy();
     }
 
     @Override
@@ -227,32 +171,5 @@ public class FinishActivity extends BaseSetupWizardActivity {
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(),
                 Activity.RESULT_OK);
         startActivityForResult(intent, NEXT_REQUEST);
-    }
-
-    private void afterAppsInstalled() {
-        if (mProgressBar.isShown()) {
-            mProgressBar.startAnimation(
-                    AnimationUtils.loadAnimation(this, R.anim.translucent_exit));
-            mProgressBar.setVisibility(View.INVISIBLE);
-            mWaitingForAppsText.setVisibility(View.INVISIBLE);
-        }
-        getPackageManager().setDefaultBrowserPackageNameAsUser(DEFAULT_BROWSER, getUserId());
-        setNextAllowed(true);
-    }
-
-    private boolean shouldWeWaitForApps() {
-        if (AppInstallerService.areAllAppsInstalled())
-            return false;
-        File repoPath = new File(path);
-        if (!repoPath.isDirectory()) {
-            return false;
-        } else {
-            try {
-                FDroidRepo.checkFdroidRepo(path);
-            } catch (IOException | JSONException e) {
-                return false;
-            }
-        }
-        return true;
     }
 }
