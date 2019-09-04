@@ -18,7 +18,6 @@ package org.calyxos.setupwizard.apps;
 
 import android.annotation.Nullable;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,7 +45,6 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
     private RecyclerView list;
     private AppAdapter adapter;
     private CheckBox checkBoxAll;
-    private PackageManager pm;
     private boolean appUnchecked = false;
 
     @Override
@@ -67,8 +65,6 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
         });
         View allLayout = findViewById(R.id.allLayout);
         allLayout.setOnClickListener(v -> checkBoxAll.toggle());
-
-        pm = getPackageManager();
 
         path = getString(R.string.calyx_fdroid_repo_location);
 
