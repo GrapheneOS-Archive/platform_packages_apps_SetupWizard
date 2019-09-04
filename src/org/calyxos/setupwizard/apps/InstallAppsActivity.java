@@ -27,9 +27,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.calyxos.setupwizard.BaseSetupWizardActivity;
 import org.calyxos.setupwizard.R;
 import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
+import org.calyxos.setupwizard.backup.RestoreIntroActivity;
 
 import java.io.IOException;
 import java.io.File;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 
@@ -38,6 +40,8 @@ import static org.calyxos.setupwizard.SetupWizardApp.FDROID_CATEGORY_DEFAULT;
 import static org.calyxos.setupwizard.SetupWizardApp.PACKAGENAMES;
 import static org.calyxos.setupwizard.apps.AppInstallerService.APKS;
 import static org.calyxos.setupwizard.apps.AppInstallerService.PATH;
+import static org.calyxos.setupwizard.util.SetupWizardUtils.disableComponent;
+import static org.calyxos.setupwizard.util.SetupWizardUtils.enableComponent;
 
 public class InstallAppsActivity extends BaseSetupWizardActivity implements AppItemListener {
 
@@ -114,11 +118,17 @@ public class InstallAppsActivity extends BaseSetupWizardActivity implements AppI
             return;
         }
 
-        Intent i = new Intent(this, AppInstallerService.class);
-        i.putExtra(PATH, path);
-        i.putStringArrayListExtra(APKS, adapter.getSelectedPackageNameAPKs());
-        i.putStringArrayListExtra(PACKAGENAMES, adapter.getSelectedPackageNames());
-        startForegroundService(i);
+        ArrayList<String> apks = adapter.getSelectedPackageNameAPKs();
+        if (apks.size() > 0) {
+            Intent i = new Intent(this, AppInstallerService.class);
+            i.putExtra(PATH, path);
+            i.putStringArrayListExtra(APKS, apks);
+            i.putStringArrayListExtra(PACKAGENAMES, adapter.getSelectedPackageNames());
+            startForegroundService(i);
+            enableComponent(this, WaitInstallAppsActivity.class);
+        } else {
+            disableComponent(this, WaitInstallAppsActivity.class);
+        }
         super.onNextPressed();
     }
 
