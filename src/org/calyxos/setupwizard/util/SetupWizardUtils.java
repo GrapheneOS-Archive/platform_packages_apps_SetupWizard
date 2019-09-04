@@ -61,6 +61,7 @@ import org.calyxos.setupwizard.MobileDataActivity;
 import org.calyxos.setupwizard.SetupWizardApp;
 import org.calyxos.setupwizard.SimMissingActivity;
 import org.calyxos.setupwizard.WifiSetupActivity;
+import org.calyxos.setupwizard.backup.RestoreIntroActivity;
 import org.calyxos.setupwizard.wizardmanager.WizardManager;
 
 import java.util.ArrayList;
@@ -239,6 +240,9 @@ public class SetupWizardUtils {
     }
 
     public static void disableComponentsForMissingFeatures(Context context) {
+        // TODO enable when shipping backup app
+        disableComponent(context, RestoreIntroActivity.class);
+
         if (!hasLeanback(context)) {
             disableComponent(context, BluetoothSetupActivity.class);
         }
