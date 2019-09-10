@@ -93,15 +93,20 @@ public class AppInstallerService extends IntentService {
                     }
                     waitTime -= WAIT_TIME;
                 }
+                mAllAppsInstalled = true;
+                Intent i2 = new Intent(ACTION_APPS_INSTALLED);
+                i2.setPackage(getPackageName());
+                sendBroadcastAsUser(i2, Binder.getCallingUserHandle(), FINISH_SETUP);
+            } else if (mPackagesExpected != null && mPackagesExpected.isEmpty()) {
+                mAllAppsInstalled = true;
+                Intent i2 = new Intent(ACTION_APPS_INSTALLED);
+                i2.setPackage(getPackageName());
+                sendBroadcastAsUser(i2, Binder.getCallingUserHandle(), FINISH_SETUP);
             }
         } catch (NullPointerException e) {
             // Ignore
-            // TODO don't ignore this and fix the underlying issue instead
+            // TODO: Fix this mess properly.
         }
-        mAllAppsInstalled = true;
-        Intent i2 = new Intent(ACTION_APPS_INSTALLED);
-        i2.setPackage(getPackageName());
-        sendBroadcastAsUser(i2, Binder.getCallingUserHandle(), FINISH_SETUP);
     }
 
     @Override
@@ -143,7 +148,7 @@ public class AppInstallerService extends IntentService {
         }
     }
 
-    static Boolean areAllAppsInstalled() {
+    public static Boolean areAllAppsInstalled() {
         return mAllAppsInstalled;
     }
 
