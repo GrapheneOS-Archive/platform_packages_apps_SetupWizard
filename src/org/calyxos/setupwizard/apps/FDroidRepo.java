@@ -40,6 +40,18 @@ public class FDroidRepo {
 
     public static final String TAG = FDroidRepo.class.getSimpleName();
 
+    public static void checkFdroidRepo(String path) throws IOException, JSONException {
+        try {
+            File index = new File(path + "/index-v1.json");
+            JSONObject obj = new JSONObject(new String(IOUtils.toByteArray(index)));
+            JSONArray apps = obj.getJSONArray("apps");
+            JSONObject packages = obj.getJSONObject("packages");
+        } catch (IOException | JSONException e) {
+            Log.e(TAG, "Failed to parse local F-Droid repo index-v1.json" + e);
+            throw e;
+        }
+    }
+
     @WorkerThread
     public static void loadFdroidJson(String category, String path, RecyclerView list, AppAdapter adapter) {
         try {
@@ -51,7 +63,7 @@ public class FDroidRepo {
                 addApp(category, path, apps.getJSONObject(i), packages, list, adapter);
             }
         } catch (IOException | JSONException e) {
-            Log.e(TAG, "Failed to local repo index-v1.json" + e);
+            Log.e(TAG, "Failed to parse local F-Droid repo index-v1.json" + e);
         }
     }
 
