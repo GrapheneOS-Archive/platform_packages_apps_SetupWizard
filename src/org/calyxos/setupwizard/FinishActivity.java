@@ -41,9 +41,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.File;
+
+import org.json.JSONException;
+
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import org.calyxos.setupwizard.apps.AppInstallerService;
+import org.calyxos.setupwizard.apps.FDroidRepo;
 import org.calyxos.setupwizard.util.EnableAccessibilityController;
 
 import static android.os.Binder.getCallingUserHandle;
@@ -68,6 +74,8 @@ public class FinishActivity extends BaseSetupWizardActivity {
     private ProgressBar mProgressBar;
     private TextView mWaitingForAppsText;
 
+    private String path;
+
     private final BroadcastReceiver packageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -91,7 +99,8 @@ public class FinishActivity extends BaseSetupWizardActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progress);
         mWaitingForAppsText = (TextView) findViewById(R.id.waiting_for_apps);
         registerReceiver(packageReceiver, new IntentFilter(ACTION_APPS_INSTALLED));
-        if (AppInstallerService.areAllAppsInstalled()) {
+        path = getString(R.string.calyx_fdroid_repo_location);
+        if (!shouldWeWaitForApps()) {
             afterAppsInstalled();
         } else {
             // Wait for all apps to be installed before allowing the user to proceed
@@ -229,5 +238,21 @@ public class FinishActivity extends BaseSetupWizardActivity {
         }
         getPackageManager().setDefaultBrowserPackageNameAsUser(DEFAULT_BROWSER, getUserId());
         setNextAllowed(true);
+    }
+
+    private boolean shouldWeWaitForApps() {
+        if (AppInstallerService.areAllAppsInstalled())
+            return false;
+        File repoPath = new File(path);
+        if (!repoPath.isDirectory()) {
+            return false;
+        } else {
+            try {
+                FDroidRepo.checkFdroidRepo(path);
+            } catch (IOException | JSONException e) {
+                return false;
+            }
+        }
+        return true;
     }
 }

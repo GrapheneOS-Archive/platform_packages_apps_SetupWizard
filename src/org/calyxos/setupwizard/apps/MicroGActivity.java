@@ -28,7 +28,10 @@ import org.calyxos.setupwizard.BaseSetupWizardActivity;
 import org.calyxos.setupwizard.R;
 import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
 
+import java.io.IOException;
 import java.io.File;
+
+import org.json.JSONException;
 
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
@@ -121,7 +124,13 @@ public class MicroGActivity extends BaseSetupWizardActivity implements AppItemLi
         File repoPath = new File(path);
         if (!repoPath.isDirectory()) {
             Log.e(TAG, "Local repo does not exist: " + repoPath);
-            finish();
+            super.onNextPressed();
+        } else {
+            try {
+                FDroidRepo.checkFdroidRepo(path);
+            } catch (IOException | JSONException e) {
+                super.onNextPressed();
+            }
         }
         new Thread(() -> {
             FDroidRepo.loadFdroidJson(FDROID_CATEGORY_DEFAULT_BACKEND, path, list, adapter);
