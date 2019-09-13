@@ -21,7 +21,7 @@
 
     <string name="calyx_wizard_script_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script</string>
     <string name="calyx_wizard_script_user_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script_user</string>
-    <string name="calyx_fdroid_repo_location" translatable="false">/system/fdroid/calyx/repo</string>
+    <string name="calyx_fdroid_repo_location" translatable="false">/product/fdroid/repo</string>
 
     <string name="activity_label_empty" />
 
