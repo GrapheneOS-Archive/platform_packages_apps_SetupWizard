@@ -87,16 +87,6 @@
 
                 <include layout="@layout/divider" />
 
-                <!-- Not shown right now, kept for code reuse and simplicity -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/list_item_app"
-                    android:visibility="gone" />
-
             </LinearLayout>
         </ScrollView>
     </FrameLayout>

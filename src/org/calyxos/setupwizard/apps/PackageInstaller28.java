@@ -29,6 +29,7 @@ import android.content.pm.PackageInstaller;
 import android.content.pm.PackageInstaller.Session;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageParser;
+import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.internal.content.PackageHelper;
@@ -38,6 +39,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Set;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Intent.FLAG_RECEIVER_FOREGROUND;
@@ -45,6 +47,7 @@ import static android.content.pm.PackageInstaller.SessionParams;
 import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;
 import static android.content.pm.PackageManager.INSTALL_FULL_APP;
 import static android.content.pm.PackageParser.PackageParserException;
+import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.READ_PHONE_STATE;
 
@@ -52,8 +55,6 @@ class PackageInstaller28 {
 
     private static final String TAG = PackageInstaller28.class.getSimpleName();
     private static final String PRIV_EXT_PACKAGE_ID = "org.fdroid.fdroid.privileged";
-    private static final String UNIFIEDNLP_BACKEND_MOZILLA = "org.microg.nlp.backend.ichnaea";
-    private static final String UNIFIEDNLP_BACKEND_DEJAVU = "org.fitchfamily.android.dejavu";
     private static final String BROADCAST_ACTION = "com.android.packageinstaller.ACTION_INSTALL_COMMIT";
     private static final int BUFFER_SIZE = 1024 * 1024;
 
@@ -85,12 +86,6 @@ class PackageInstaller28 {
             params.setAppPackageName(pkg.packageName);
             params.setInstallLocation(pkg.installLocation);
             params.setSize(PackageHelper.calculateInstalledSize(pkg, false, params.abiOverride));
-            // microG UnifiedNlp location providers
-            if (pkg.packageName.equals(UNIFIEDNLP_BACKEND_MOZILLA)) {
-                params.setGrantedRuntimePermissions(new String[] {ACCESS_FINE_LOCATION, READ_PHONE_STATE});
-            } else if (pkg.packageName.equals(UNIFIEDNLP_BACKEND_DEJAVU)) {
-                params.setGrantedRuntimePermissions(new String[] {ACCESS_FINE_LOCATION});
-            }
         } catch (PackageParserException e) {
             Log.e(TAG, "Cannot parse package " + packageFile + ". Assuming defaults.");
             Log.e(TAG, "Cannot calculate installed size " + packageFile + ". Try only apk size.");
