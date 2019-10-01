@@ -22,35 +22,22 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Switch;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import org.calyxos.setupwizard.BaseSetupWizardActivity;
 import org.calyxos.setupwizard.R;
-import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
-
-import java.io.IOException;
-import java.io.File;
-
-import org.json.JSONException;
 
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
-import static org.calyxos.setupwizard.SetupWizardApp.FDROID_CATEGORY_DEFAULT_BACKEND;
-import static org.calyxos.setupwizard.apps.AppInstallerService.APKS;
-import static org.calyxos.setupwizard.apps.AppInstallerService.PATH;
 
-public class MicroGActivity extends BaseSetupWizardActivity implements AppItemListener {
+public class MicroGActivity extends BaseSetupWizardActivity {
 
     public static final String TAG = MicroGActivity.class.getSimpleName();
     private static final String[] MICROG_PACKAGES = new String[]{
             "com.google.android.gms",
-            "com.android.vending"
+            "com.android.vending",
+            "org.fitchfamily.android.dejavu",
+            "org.microg.nlp.backend.ichnaea",
+            "org.microg.nlp.backend.nominatim"
     };
-
-    private static String path;
-
-    private RecyclerView list;
-    private AppAdapter adapter;
 
     private PackageManager pm;
     private Switch enableSwitch;
@@ -65,14 +52,6 @@ public class MicroGActivity extends BaseSetupWizardActivity implements AppItemLi
         findViewById(R.id.switchLayout).setOnClickListener(v -> enableSwitch.toggle());
 
         pm = getPackageManager();
-
-        // This list is not shown to the user for now.
-        list = findViewById(R.id.list);
-        adapter = new AppAdapter(this);
-        list.setAdapter(adapter);
-        path = getString(R.string.calyx_fdroid_repo_location);
-
-        getApps();
     }
 
     @Override
@@ -96,21 +75,10 @@ public class MicroGActivity extends BaseSetupWizardActivity implements AppItemLi
     }
 
     @Override
-    public void onItemUnchecked() {
-        // Do nothing.
-    }
-
-    @Override
     public void onNextPressed() {
         boolean enabled = enableSwitch.isChecked();
         for (String packageId : MICROG_PACKAGES) {
             setAppEnabled(packageId, enabled);
-        }
-        if (enabled) {
-            Intent i = new Intent(this, AppInstallerService.class);
-            i.putExtra(PATH, path);
-            i.putStringArrayListExtra(APKS, adapter.getSelectedPackageNameAPKs());
-            startForegroundService(i);
         }
         super.onNextPressed();
     }
@@ -118,23 +86,5 @@ public class MicroGActivity extends BaseSetupWizardActivity implements AppItemLi
     private void setAppEnabled(String packageName, boolean enabled) {
         int state = enabled ? COMPONENT_ENABLED_STATE_ENABLED : COMPONENT_ENABLED_STATE_DISABLED;
         pm.setApplicationEnabledSetting(packageName, state, 0);
-    }
-
-    private void getApps() {
-        File repoPath = new File(path);
-        if (!repoPath.isDirectory()) {
-            Log.e(TAG, "Local repo does not exist: " + repoPath);
-            super.onNextPressed();
-        } else {
-            try {
-                FDroidRepo.checkFdroidRepo(path);
-            } catch (IOException | JSONException e) {
-                super.onNextPressed();
-            }
-        }
-        new Thread(() -> {
-            FDroidRepo.loadFdroidJson(FDROID_CATEGORY_DEFAULT_BACKEND, path, list, adapter);
-            list.post(() -> list.scrollToPosition(0));
-        }).start();
     }
 }
