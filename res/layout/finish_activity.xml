@@ -40,7 +40,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:gravity="center"
-            android:padding="108dp"/>
+            android:padding="60dp"/>
 
         <TextView
             android:id="@+id/waiting_for_apps"
