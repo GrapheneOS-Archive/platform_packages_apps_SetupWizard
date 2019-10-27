@@ -22,7 +22,7 @@
 
     <color name="primary">@color/page_background</color>
     <color name="primary_dark">#c2c5c7</color>
-    <color name="accent">#167C80</color>
+    <color name="accent">#99CC00</color>
     <color name="primary_text">#8a000000</color>
     <color name="secondary_text">#42000000</color>
     <color name="button_bar_text_enabled">#ff1e1e1e</color>
@@ -31,5 +31,5 @@
     <color name="header_bg">@color/primary</color>
     <color name="header_condensed_bg">@color/primary</color>
     <color name="button_bar_background">@color/primary</color>
-    <color name="fingerprint_setup_text_color">#167C80</color>
+    <color name="fingerprint_setup_text_color">#99CC00</color>
 </resources>
