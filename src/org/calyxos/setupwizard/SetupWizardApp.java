@@ -40,7 +40,7 @@ public class SetupWizardApp extends Application {
     public static final String ACTION_SETUP_WIFI = "android.net.wifi.PICK_WIFI_NETWORK";
     public static final String ACTION_SETUP_FINGERPRINT = "android.settings.FINGERPRINT_SETUP";
     public static final String ACTION_SETUP_LOCKSCREEN = "com.android.settings.SETUP_LOCK_SCREEN";
-    public static final String ACTION_RESTORE_FROM_BACKUP = "com.stevesoltys.backup.restore.RESTORE_BACKUP";
+    public static final String ACTION_RESTORE_FROM_BACKUP = "com.stevesoltys.seedvault.RESTORE_BACKUP";
     public static final String ACTION_EMERGENCY_DIAL = "com.android.phone.EmergencyDialer.DIAL";
     public static final String ACTION_NEXT = "com.android.wizard.NEXT";
     public static final String ACTION_LOAD = "com.android.wizard.LOAD";
