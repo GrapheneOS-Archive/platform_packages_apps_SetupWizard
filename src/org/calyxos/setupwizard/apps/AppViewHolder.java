@@ -50,6 +50,8 @@ class AppViewHolder extends ViewHolder {
         icon.setImageDrawable(item.icon);
         name.setText(item.name);
         summary.setText(item.summary);
+        // prevent recycled listener from getting called when re-binding
+        checkBox.setOnCheckedChangeListener(null);
         checkBox.setChecked(item.checked);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (!isChecked) listener.onItemUnchecked();
