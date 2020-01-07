@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.calyxos.setupwizard.BaseSetupWizardActivity;
 import org.calyxos.setupwizard.R;
 import org.calyxos.setupwizard.apps.AppAdapter.AppItemListener;
-import org.calyxos.setupwizard.backup.RestoreIntroActivity;
 
 import java.io.IOException;
 import java.io.File;
