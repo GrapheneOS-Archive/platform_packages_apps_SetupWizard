@@ -62,14 +62,6 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_BIOMETRIC_SETTINGS;end" id="biometric_settings">
-        <result wizard:action="install_apps" />
-    </WizardAction>
-
-    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_INSTALL_APPS;end" id="install_apps">
-        <result wizard:action="wait_install_apps" />
-    </WizardAction>
-
-    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_WAIT_INSTALL_APPS;end" id="wait_install_apps">
         <result wizard:action="restore" />
     </WizardAction>
 
