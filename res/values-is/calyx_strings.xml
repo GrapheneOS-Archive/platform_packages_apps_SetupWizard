@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="intro_restore_button">Endurheimta úr afriti</string>
-    <string name="intro_restore_subtitle">Ef þú átt afrit úr síðasta Calyx símnum þínum geturðu endurheimt það hér.</string>
+    <string name="intro_restore_subtitle">Ef þú átt afrit úr síðasta GrapheneOS símnum þínum geturðu endurheimt það hér.</string>
     <string name="intro_restore_title">Endurheimta öpp og gögn</string>
     <string name="microg_warning">ATH: Ef þú leyfir þetta núna mun síminn þinn senda Google gögn. Þú getur breytt þessu síðar í microG stillingunum.</string>
     <string name="microg_switch_label">Leyfa samþættingu við Google þjónustur</string>
-    <string name="microg_description">Þetta heimiliar öppum eins og &lt;b&gt;Google Maps, Youtube og ferðadeiliöppum&lt;/b&gt; að keyra á CalyxOW. Ekki leyfa þetta ef þú ætlar ekki að nota öpp sem styðjast við Google þjónustur. Þá munt þú ekki geta leyft það síðar.<b>Google Maps, Youtube and ride sharing services</b> to run on CalyxOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
+    <string name="microg_description">Þetta heimiliar öppum eins og &lt;b&gt;Google Maps, Youtube og ferðadeiliöppum&lt;/b&gt; að keyra á GrapheneOSOW. Ekki leyfa þetta ef þú ætlar ekki að nota öpp sem styðjast við Google þjónustur. Þá munt þú ekki geta leyft það síðar.<b>Google Maps, Youtube and ride sharing services</b> to run on GrapheneOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
     <string name="microg_title">Þjónustur Google</string>
     <string name="waiting_for_apps">vinsamega hinkraðu meðan á uppsetningu stendur.</string>
     <string name="install_apps_select_all">Öll eftirfarandi öpp</string>
