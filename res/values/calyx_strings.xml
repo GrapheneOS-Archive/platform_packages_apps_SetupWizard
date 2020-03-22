@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020 The Calyx Institute
+     Copyright (C) 2020 The GrapheneOS Institute
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -27,12 +27,12 @@
 
     <!-- MicroG setup -->
     <string name="microg_title">Google Services</string>
-    <string name="microg_description">This allows apps such as <b>Google Maps, Youtube and ride sharing services</b> to run on CalyxOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
+    <string name="microg_description">This allows apps such as <b>Google Maps, Youtube and ride sharing services</b> to run on GrapheneOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
     <string name="microg_switch_label">Enable Google Services Compatibility</string>
     <string name="microg_warning">Note: If you enable this now, your phone will be set up to send data to Google.  You can change this later in the microG settings.</string>
 
     <!-- Backup Restore -->
     <string name="intro_restore_title">Restore apps and data</string>
-    <string name="intro_restore_subtitle">If you have a backup from your last Calyx phone, you can restore it here.</string>
+    <string name="intro_restore_subtitle">If you have a backup from your last GrapheneOS phone, you can restore it here.</string>
     <string name="intro_restore_button">Restore from backup</string>
 </resources>

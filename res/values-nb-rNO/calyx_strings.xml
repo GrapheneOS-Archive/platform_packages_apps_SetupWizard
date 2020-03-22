@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="microg_warning">Merk: Hvis du skrur dette på nå, vil enheten din kunne sende data til Google. Du kan endre dette senere i microG-innstillingene.</string>
-    <string name="microg_description">Dette tillater programmer som <b>Google Maps, YouTube og kjøretøydeling</b> å kjøre på CalyxOS. Skru dette av hvis du ikke har tenkt til å kjøre programmer som krever Google-tjenester. Du vil ikke kunne skru det på senere.</string>
+    <string name="microg_description">Dette tillater programmer som <b>Google Maps, YouTube og kjøretøydeling</b> å kjøre på GrapheneOS. Skru dette av hvis du ikke har tenkt til å kjøre programmer som krever Google-tjenester. Du vil ikke kunne skru det på senere.</string>
     <string name="microg_switch_label">Skru på kompabilitet med Google-tjenester</string>
     <string name="intro_restore_title">Gjenopprett programmer og data</string>
-    <string name="intro_restore_subtitle">Hvis du har en sikkerhetskopi fra din siste Calyx-enhet, kan du gjenopprette den her.</string>
+    <string name="intro_restore_subtitle">Hvis du har en sikkerhetskopi fra din siste GrapheneOS-enhet, kan du gjenopprette den her.</string>
     <string name="intro_restore_button">Gjenopprett fra sikkerhetskopi</string>
     <string name="waiting_for_apps">Vent mens oppsettet av enheten din fullføres.</string>
     <string name="install_apps_subtitle">&lt;b&gt;Gjennomse ytterligere programmer.&lt;/b&gt; Du kan installere dem senere også.<b>Review additional apps.</b> You can install them later as well.</string>
