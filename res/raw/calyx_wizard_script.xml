@@ -58,10 +58,10 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_LOCKSCREEN_SETTINGS;end" id="lockscreen_settings">
-        <result wizard:action="fingerprint_settings" />
+        <result wizard:action="biometric_settings" />
     </WizardAction>
 
-    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_FINGERPRINT_SETTINGS;end" id="fingerprint_settings">
+    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_BIOMETRIC_SETTINGS;end" id="biometric_settings">
         <result wizard:action="microg" />
     </WizardAction>
 
