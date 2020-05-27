@@ -224,7 +224,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FingerprintActivity"
+        <activity android:name=".BiometricActivity"
                   android:label="@string/activity_label_empty"
                   android:excludeFromRecents="true"
                   android:configChanges="mcc|mnc"
@@ -232,7 +232,7 @@
                   android:exported="false"
                   android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
-                <action android:name="org.calyxos.setupwizard.CALYX_FINGERPRINT_SETTINGS" />
+                <action android:name="org.calyxos.setupwizard.CALYX_BIOMETRIC_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
