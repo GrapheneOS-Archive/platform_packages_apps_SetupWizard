@@ -22,6 +22,7 @@
         <permission name="android.permission.GET_ACCOUNTS_PRIVILEGED"/>
         <permission name="android.permission.INSTALL_PACKAGES"/>
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
         <permission name="android.permission.MANAGE_USERS"/>
         <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
         <permission name="android.permission.SET_TIME"/>
