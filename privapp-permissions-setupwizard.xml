@@ -29,6 +29,7 @@
         <permission name="android.permission.BACKUP"/>
         <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
         <permission name="android.permission.INSTALL_PACKAGES"/>
+        <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
     </privapp-permissions>
 
 </permissions>
