@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_restore_button">Restore depuis une sauvergarde</string>
+    <string name="intro_restore_subtitle">Si vous avez une sauvegarde de votre dernier téléphone Calyx, vous pouvez la restaurer ici.</string>
+    <string name="intro_restore_title">Restaurer les applis et les données</string>
+    <string name="microg_warning">Remarque : Si vous activez ceci maintenant, votre téléphone sera configuré pour envoyer des données à Google. Vous pouvez changer ceci plus tard dans les paramètres microG.</string>
+    <string name="microg_switch_label">Activer la compatibilité des services Google</string>
+    <string name="microg_description">Ceci permet à des applications telles que &lt;b&gt;Google Maps, YouTube et les services de partage de traje &lt;/b&gt; de fonctionner sur CalyxOS. Désactivez ceci si vous ne prévoyez pas d’exécuter des applications qui nécessitent des services Google. Vous ne pourrez pas l’activer plus tard.<b>Google Maps, Youtube and ride sharing services</b> to run on CalyxOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
+    <string name="microg_title">Services Google</string>
+    <string name="waiting_for_apps">Veuillez patienter pendant que nous finissons de configurer votre appareil.</string>
+    <string name="install_apps_select_all">Toutes les applis suivantes</string>
+    <string name="install_apps_subtitle">&lt;b&gt;Consultez des applications supplémentaires. &lt;/b&gt; Vous pouvez également les installer plus tard.<b>Review additional apps.</b> You can install them later as well.</string>
+    <string name="install_apps_title">Applis supplémentaires</string>
+    <string name="calyx_fdroid_repo_location" translatable="false">/product/fdroid/repo</string>
+    <string name="calyx_wizard_script_user_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script_user</string>
+    <string name="calyx_wizard_script_uri" translatable="false">android.resource://org.calyxos.setupwizard/raw/calyx_wizard_script</string>
+</resources>
