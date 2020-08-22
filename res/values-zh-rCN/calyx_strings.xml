@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_restore_button">从备用中重置</string>
+    <string name="intro_restore_title">重置应用和数据</string>
+    <string name="microg_title">Google服务</string>
+    <string name="waiting_for_apps">请等待设备完成设定。</string>
+    <string name="install_apps_select_all">以下所有应用</string>
+    <string name="install_apps_title">附加应用</string>
+    <string name="intro_restore_subtitle">如果您有 CalyxOS 手机的备份，您可以现在是恢复数据。</string>
+    <string name="microg_warning">注意：开启此选项后您的设备将向 Google 发送数据。您稍后可在 MicroG 设置中修改相关发送设置。</string>
+    <string name="microg_switch_label">启用 Google 服务</string>
+    <string name="microg_description">这能让您在 CalyxOS 上安装 <b>Google 地图、Youtube 及其他需要谷歌框架的应用</b>。之后将无法启用此选项。</string>
+    <string name="install_apps_subtitle"><b>查看额外应用。</b>你也可以稍后再安装。</string>
+</resources>

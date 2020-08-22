@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="microg_warning">Merk: Hvis du skrur dette på nå, vil enheten din kunne sende data til Google. Du kan endre dette senere i microG-innstillingene.</string>
-    <string name="microg_description">Dette tillater programmer som &lt;b&gt;Google Maps, YouTube og kjøretøydeling&lt;/b&gt; å kjøre på CalyxOS. Skru dette av hvis du ikke har tenkt til å kjøre programmer som krever Google-tjenester. Du vil ikke kunne skru det på senere.<b>Google Maps, Youtube and ride sharing services</b> to run on CalyxOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
+    <string name="microg_description">Dette tillater programmer som <b>Google Maps, YouTube og kjøretøydeling</b> å kjøre på CalyxOS. Skru dette av hvis du ikke har tenkt til å kjøre programmer som krever Google-tjenester. Du vil ikke kunne skru det på senere.</string>
     <string name="microg_switch_label">Skru på kompabilitet med Google-tjenester</string>
     <string name="intro_restore_title">Gjenopprett programmer og data</string>
     <string name="intro_restore_subtitle">Hvis du har en sikkerhetskopi fra din siste Calyx-enhet, kan du gjenopprette den her.</string>

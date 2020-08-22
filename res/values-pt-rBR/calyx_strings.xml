@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_restore_button">Restaurar do backup</string>
+    <string name="intro_restore_subtitle">Se você tiver um backup do seu último telefone Calyx, poderá restaurá-lo aqui.</string>
+    <string name="intro_restore_title">Restaurar aplicativos e dados</string>
+    <string name="microg_warning">Nota: se você ativar isso agora, seu dispositivo estará configurado para enviar dados ao Google. Você pode alterar isso mais tarde nas configurações do microG.</string>
+    <string name="microg_switch_label">Habilitar Compatibilidade de Serviços do Google</string>
+    <string name="microg_description">Isso permite que aplicativos como &lt;b&gt;Google Maps, Youtube e serviços de compartilhamento de passeios&lt;/b&gt; funcionem no CalyxOS. Desative esta opção se você não planeja executar aplicativos que requerem os serviços do Google.<b>Google Maps, Youtube and ride sharing services</b> to run on CalyxOS. Disable this if you don\'t plan on running apps that require Google services. You will not be able to enable it later.</string>
+    <string name="microg_title">Serviços Google</string>
+    <string name="waiting_for_apps">Aguarde enquanto terminamos de configurar seu dispositivo.</string>
+    <string name="install_apps_select_all">Todos os seguintes aplicativos</string>
+    <string name="install_apps_subtitle">&lt;b&gt;Avaliar os aplicativos adicionais.&lt;/b&gt; Você também pode instalá-los mais tarde.<b>Review additional apps.</b> You can install them later as well.</string>
+    <string name="install_apps_title">Aplicativos adicionais</string>
+</resources>
