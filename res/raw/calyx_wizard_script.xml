@@ -32,10 +32,6 @@
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_DATETIME;end" id="datetime">
-        <result wizard:action="wifi_setup" />
-    </WizardAction>
-
-    <WizardAction wizard:uri="intent:#Intent;action=org.calyxos.setupwizard.CALYX_WIFI_SETUP;end" id="wifi_setup">
         <result wizard:resultCode="1" wizard:action="sim_missing" wizard:name="no_sim" />
         <result wizard:action="choose_data_sim" />
     </WizardAction>
