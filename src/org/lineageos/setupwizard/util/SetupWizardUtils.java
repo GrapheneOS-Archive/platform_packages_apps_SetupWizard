@@ -171,18 +171,6 @@ public class SetupWizardUtils {
     }
 
     public static boolean hasGMS(Context context) {
-        String gmsSuwPackage = hasLeanback(context) ? GMS_TV_SUW_PACKAGE : GMS_SUW_PACKAGE;
-
-        if (PackageManagerUtils.isAppInstalled(context, GMS_PACKAGE) &&
-                PackageManagerUtils.isAppInstalled(context, gmsSuwPackage)) {
-            PackageManager packageManager = context.getPackageManager();
-            if (LOGV) {
-                Log.v(TAG, GMS_SUW_PACKAGE + " state = " +
-                        packageManager.getApplicationEnabledSetting(gmsSuwPackage));
-            }
-            return packageManager.getApplicationEnabledSetting(gmsSuwPackage) !=
-                    COMPONENT_ENABLED_STATE_DISABLED;
-        }
         return false;
     }
 
