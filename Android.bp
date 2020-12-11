@@ -34,7 +34,6 @@ android_app {
         "androidx.core_core",
         "setupcompat",
         "setupdesign",
-        "org.lineageos.platform.internal",
     ],
 
     libs: ["telephony-common"],
