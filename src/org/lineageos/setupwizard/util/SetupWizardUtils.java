@@ -63,8 +63,6 @@ import org.lineageos.setupwizard.SimMissingActivity;
 import org.lineageos.setupwizard.WifiSetupActivity;
 import org.lineageos.setupwizard.wizardmanager.WizardManager;
 
-import org.lineageos.internal.util.PackageManagerUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
