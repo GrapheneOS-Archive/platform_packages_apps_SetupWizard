@@ -11,7 +11,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 # Include all test java files.
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
-LOCAL_PACKAGE_NAME := LineageSetupWizardTests
+LOCAL_PACKAGE_NAME := SetupWizardTests
 LOCAL_CERTIFICATE := platform
 
 LOCAL_PRIVATE_PLATFORM_APIS := true

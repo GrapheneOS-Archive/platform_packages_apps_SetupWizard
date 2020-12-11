@@ -50,6 +50,6 @@
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
                      android:targetPackage="org.lineageos.setupwizard"
-                     android:label="Tests for LineageSetupWizard."/>
+                     android:label="Tests for SetupWizard."/>
 
 </manifest>
