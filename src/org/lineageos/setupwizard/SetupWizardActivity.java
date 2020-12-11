@@ -42,10 +42,7 @@ public class SetupWizardActivity extends BaseSetupWizardActivity {
         if (LOGV) {
             Log.v(TAG, "onCreate savedInstanceState=" + savedInstanceState);
         }
-        if (SetupWizardUtils.hasGMS(this)) {
-            SetupWizardUtils.disableHome(this);
-            finish();
-        } else if (WizardManagerHelper.isUserSetupComplete(this)) {
+        if (WizardManagerHelper.isUserSetupComplete(this)) {
             SetupWizardUtils.finishSetupWizard(this);
             finish();
         } else {
