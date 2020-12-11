@@ -83,24 +83,21 @@
         <result wizard:action="setup_as_new_flow" wizard:name="gmscore_zero_touch" wizard:resultCode="116" />
     </WizardAction>
     <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_unified_restore_flow" id="unified_restore_flow">
-        <result wizard:action="oem_post_setup" />
-    </WizardAction>
-    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_no_network_flow" id="no_network_flow">
-        <result wizard:action="oem_post_setup" />
-    </WizardAction>
-    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_account_flow" id="add_personal_account_after_work_profile">
-        <result wizard:action="oem_post_setup" />
-    </WizardAction>
-    <WizardAction wizard:flow="SetupAsNewFlow" wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_account_flow" id="setup_as_new_flow">
-        <result wizard:action="oem_post_setup" />
-    </WizardAction>
-    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_post_dpm_user_flow" id="post_dpm_user_flow">
-        <result wizard:action="oem_post_setup" />
-    </WizardAction>
-    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_qr_provision_flow" id="qr_provision_flow" />
-    <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_RECOVERY_UPDATE;end" id="oem_post_setup">
         <result wizard:action="restore" />
     </WizardAction>
+    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_no_network_flow" id="no_network_flow">
+        <result wizard:action="restore" />
+    </WizardAction>
+    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_account_flow" id="add_personal_account_after_work_profile">
+        <result wizard:action="restore" />
+    </WizardAction>
+    <WizardAction wizard:flow="SetupAsNewFlow" wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_account_flow" id="setup_as_new_flow">
+        <result wizard:action="restore" />
+    </WizardAction>
+    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_post_dpm_user_flow" id="post_dpm_user_flow">
+        <result wizard:action="restore" />
+    </WizardAction>
+    <WizardAction wizard:script="android.resource://com.google.android.setupwizard/xml/wizard_script_qr_provision_flow" id="qr_provision_flow" />
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_RESTORE_BACKUP;end" id="restore">
         <result wizard:action="finish" />
     </WizardAction>

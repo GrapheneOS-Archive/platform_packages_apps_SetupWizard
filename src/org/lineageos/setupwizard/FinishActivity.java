@@ -21,9 +21,7 @@ import static android.os.Binder.getCallingUserHandle;
 
 import static org.lineageos.setupwizard.Manifest.permission.FINISH_SETUP;
 import static org.lineageos.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
-import static org.lineageos.setupwizard.SetupWizardApp.ENABLE_RECOVERY_UPDATE;
 import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
-import static org.lineageos.setupwizard.SetupWizardApp.UPDATE_RECOVERY_PROP;
 
 import android.animation.Animator;
 import android.app.Activity;
@@ -36,7 +34,6 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -165,7 +162,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
     }
 
     private void completeSetup() {
-        handleRecoveryUpdate(mSetupWizardApp);
         final WallpaperManager wallpaperManager =
                 WallpaperManager.getInstance(mSetupWizardApp);
         wallpaperManager.forgetLoadedWallpaper();
@@ -174,14 +170,5 @@ public class FinishActivity extends BaseSetupWizardActivity {
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(),
                 Activity.RESULT_OK);
         startActivityForResult(intent, NEXT_REQUEST);
-    }
-
-    private static void handleRecoveryUpdate(SetupWizardApp setupWizardApp) {
-        if (setupWizardApp.getSettingsBundle().containsKey(ENABLE_RECOVERY_UPDATE)) {
-            boolean update = setupWizardApp.getSettingsBundle()
-                    .getBoolean(ENABLE_RECOVERY_UPDATE);
-
-            SystemProperties.set(UPDATE_RECOVERY_PROP, String.valueOf(update));
-        }
     }
 }
