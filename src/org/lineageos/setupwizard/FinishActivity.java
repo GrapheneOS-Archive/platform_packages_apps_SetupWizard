@@ -18,9 +18,7 @@
 package org.lineageos.setupwizard;
 
 import static org.lineageos.setupwizard.SetupWizardApp.ACTION_SETUP_COMPLETE;
-import static org.lineageos.setupwizard.SetupWizardApp.DISABLE_NAV_KEYS;
 import static org.lineageos.setupwizard.SetupWizardApp.ENABLE_RECOVERY_UPDATE;
-import static org.lineageos.setupwizard.SetupWizardApp.KEY_SEND_METRICS;
 import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
 import static org.lineageos.setupwizard.SetupWizardApp.UPDATE_RECOVERY_PROP;
 
@@ -45,8 +43,6 @@ import android.widget.ImageView;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import org.lineageos.setupwizard.util.EnableAccessibilityController;
-
-import lineageos.providers.LineageSettings;
 
 import static android.os.Binder.getCallingUserHandle;
 import static org.lineageos.setupwizard.Manifest.permission.FINISH_SETUP;
@@ -175,8 +171,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
         if (mEnableAccessibilityController != null) {
             mEnableAccessibilityController.onDestroy();
         }
-        handleEnableMetrics(mSetupWizardApp);
-        handleNavKeys(mSetupWizardApp);
         handleRecoveryUpdate(mSetupWizardApp);
         final WallpaperManager wallpaperManager =
                 WallpaperManager.getInstance(mSetupWizardApp);
@@ -187,42 +181,12 @@ public class FinishActivity extends BaseSetupWizardActivity {
         startActivityForResult(intent, NEXT_REQUEST);
     }
 
-    private static void handleEnableMetrics(SetupWizardApp setupWizardApp) {
-        Bundle privacyData = setupWizardApp.getSettingsBundle();
-        if (privacyData != null
-                && privacyData.containsKey(KEY_SEND_METRICS)) {
-            LineageSettings.Secure.putInt(setupWizardApp.getContentResolver(),
-                    LineageSettings.Secure.STATS_COLLECTION, privacyData.getBoolean(KEY_SEND_METRICS)
-                            ? 1 : 0);
-        }
-    }
-
-    private static void handleNavKeys(SetupWizardApp setupWizardApp) {
-        if (setupWizardApp.getSettingsBundle().containsKey(DISABLE_NAV_KEYS)) {
-            writeDisableNavkeysOption(setupWizardApp,
-                    setupWizardApp.getSettingsBundle().getBoolean(DISABLE_NAV_KEYS));
-        }
-    }
-
     private static void handleRecoveryUpdate(SetupWizardApp setupWizardApp) {
         if (setupWizardApp.getSettingsBundle().containsKey(ENABLE_RECOVERY_UPDATE)) {
             boolean update = setupWizardApp.getSettingsBundle()
                     .getBoolean(ENABLE_RECOVERY_UPDATE);
 
             SystemProperties.set(UPDATE_RECOVERY_PROP, String.valueOf(update));
-        }
-    }
-
-    private static void writeDisableNavkeysOption(Context context, boolean enabled) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-        final boolean virtualKeysEnabled = LineageSettings.System.getIntForUser(
-                    context.getContentResolver(), LineageSettings.System.FORCE_SHOW_NAVBAR, 0,
-                    UserHandle.USER_CURRENT) != 0;
-        if (enabled != virtualKeysEnabled) {
-            LineageSettings.System.putIntForUser(context.getContentResolver(),
-                    LineageSettings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0,
-                    UserHandle.USER_CURRENT);
         }
     }
 }
