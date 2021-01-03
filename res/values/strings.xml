@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Setup Wizard</string>
-    <string name="os_name" translatable="false">LineageOS</string>
+    <string name="os_name" translatable="false">GrapheneOS</string>
 
     <string name="lineage_wizard_script_uri" translatable="false">android.resource://org.lineageos.setupwizard/raw/lineage_wizard_script</string>
     <string name="lineage_wizard_script_user_uri" translatable="false">android.resource://org.lineageos.setupwizard/raw/lineage_wizard_script_user</string>
