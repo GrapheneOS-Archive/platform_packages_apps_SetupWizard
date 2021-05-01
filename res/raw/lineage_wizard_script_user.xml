@@ -17,7 +17,30 @@
 -->
 
 <WizardScript xmlns:wizard="http://schemas.android.com/apk/res/com.google.android.setupwizard"
-              wizard:firstAction="finish">
+              wizard:firstAction="welcome">
+
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_WELCOME;end" id="welcome">
+         <result wizard:action="locale"/>
+     </WizardAction>
+
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCALE;end" id="locale">
+         <result wizard:action="location_settings" />
+     </WizardAction>
+
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCATION_SETTINGS;end" id="location_settings">
+          <result wizard:action="biometric_settings"/>
+     </WizardAction>
+
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_BIOMETRIC_SETTINGS;end" id="biometric_settings">
+          <result wizard:action="lockscreen_settings"/>
+     </WizardAction>
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCKSCREEN_SETTINGS;end" id="lockscreen_settings">
+         <result wizard:action="restore"/>
+     </WizardAction>
+
+     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_RESTORE_BACKUP;end" id="restore">
+         <result wizard:action="finish"/>
+     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_SETUP_COMPLETE;end" id="finish">
         <result wizard:action="exit" />
