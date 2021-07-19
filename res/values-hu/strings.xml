@@ -77,7 +77,7 @@
     <string name="settings_lockscreen_setup_details">Hogyan szeretné zárolni a képernyőt?</string>
     <string name="lockscreen_setup_title" product="tablet">Óvja meg táblagépét</string>
     <string name="lockscreen_setup_title" product="default">Óvja meg telefonját</string>
-    <string name="lockscreen_setup_summary"><b>Óvja meg eszközét</b>, és a képernyőzár feloldásához állítson be PIN kódot, mintát vagy jelszót.</string>
+    <string name="lockscreen_setup_summary"><b>Óvja meg eszközét</b>, és a képernyőzár feloldásához állítson be PIN kódot vagy jelszót.</string>
     <string name="lockscreen_setup_screen_lock_setup">Beállítás</string>
     <string name="intro_restore_title">Alkalmazások és adatok visszaállítása</string>
     <string name="intro_restore_subtitle" product="tablet">Ha készült GrapheneOS mentés az előző tabletjéről, akkor azt itt visszaállíthatja.</string>

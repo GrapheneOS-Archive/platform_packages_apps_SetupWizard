@@ -72,6 +72,6 @@
     <string name="settings_lockscreen_setup_title">Esbillar triba de pantalla de blouquéu</string>
     <string name="settings_lockscreen_setup_details">¿Cómo te prestaría bloquiar la to pantalla?</string>
     <string name="lockscreen_setup_title" product="default">Protexi\'l to teléfonu</string>
-    <string name="lockscreen_setup_summary"><b>Protexe esti preséu</b> y riquirá un PIN, patrón o contraseña pa desbloquiar la pantalla</string>
+    <string name="lockscreen_setup_summary"><b>Protexe esti preséu</b> y riquirá un PIN o contraseña pa desbloquiar la pantalla</string>
     <string name="lockscreen_setup_screen_lock_setup">Configurar</string>
 </resources>

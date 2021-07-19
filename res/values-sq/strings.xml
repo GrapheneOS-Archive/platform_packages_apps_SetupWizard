@@ -74,6 +74,6 @@
     <string name="settings_lockscreen_setup_details">Si doni ta bllokoni ekranin?</string>
     <string name="lockscreen_setup_title" product="tablet">Mbro tabletin</string>
     <string name="lockscreen_setup_title" product="default">Mbro telefonin</string>
-    <string name="lockscreen_setup_summary"><b>Mbro këtë pajisje</b> dhe vendos një PIN, model, ose fjalëkalim për të zhbllokuar ekranin</string>
+    <string name="lockscreen_setup_summary"><b>Mbro këtë pajisje</b> dhe vendos një PIN ose fjalëkalim për të zhbllokuar ekranin</string>
     <string name="lockscreen_setup_screen_lock_setup">Konfiguro</string>
 </resources>

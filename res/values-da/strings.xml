@@ -69,6 +69,6 @@
     <string name="settings_lockscreen_setup_title">Vælg skærmlåstype</string>
     <string name="settings_lockscreen_setup_details">Hvordan vil du låse din skærm?</string>
     <string name="lockscreen_setup_title" product="default">Beskyt din telefon</string>
-    <string name="lockscreen_setup_summary"><b>Beskyt denne enhed</b>, og kræv en PIN, et mønster, eller en adgangskode, for at låse skærmen op</string>
+    <string name="lockscreen_setup_summary"><b>Beskyt denne enhed</b>, og kræv en PIN, eller en adgangskode, for at låse skærmen op</string>
     <string name="lockscreen_setup_screen_lock_setup">Opsætning</string>
 </resources>

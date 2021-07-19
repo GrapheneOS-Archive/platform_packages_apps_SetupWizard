@@ -73,6 +73,6 @@
     <string name="settings_lockscreen_setup_details">您想如何鎖定畫面？</string>
     <string name="lockscreen_setup_title" product="tablet">保護你的平板電腦</string>
     <string name="lockscreen_setup_title" product="default">保護您的手機</string>
-    <string name="lockscreen_setup_summary"><b>保護這個裝置</b>，並需要輸入 PIN 碼、解鎖圖案或密碼解除螢幕鎖定</string>
+    <string name="lockscreen_setup_summary"><b>保護這個裝置</b>，並需要輸入 PIN 碼、或密碼解除螢幕鎖定</string>
     <string name="lockscreen_setup_screen_lock_setup">設定</string>
 </resources>

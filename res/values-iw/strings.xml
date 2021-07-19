@@ -72,6 +72,6 @@
     <string name="settings_lockscreen_setup_title">בחר סוג נעילת מסך</string>
     <string name="settings_lockscreen_setup_details">כיצד הנך מעוניין לנעול את המסך שלך?</string>
     <string name="lockscreen_setup_title" product="default">הגן על הטלפון שלך</string>
-    <string name="lockscreen_setup_summary"><b>הגן על מכשיר זה</b> ודרוש קוד אימות, קו או סיסמה לביטול נעילת המסך.</string>
+    <string name="lockscreen_setup_summary"><b>הגן על מכשיר זה</b> ודרוש קוד אימות או סיסמה לביטול נעילת המסך.</string>
     <string name="lockscreen_setup_screen_lock_setup">הגדר</string>
 </resources>

@@ -73,6 +73,6 @@
     <string name="settings_lockscreen_setup_details">Jak chcesz blokować swój ekran?</string>
     <string name="lockscreen_setup_title" product="tablet">Chroń swój tablet</string>
     <string name="lockscreen_setup_title" product="default">Zabezpiecz telefon</string>
-    <string name="lockscreen_setup_summary"><b>Zabezpiecz to urządzenie</b>, wymagając kodu PIN, wzoru lub hasła do odblokowania ekranu</string>
+    <string name="lockscreen_setup_summary"><b>Zabezpiecz to urządzenie</b>, wymagając kodu PIN lub hasła do odblokowania ekranu</string>
     <string name="lockscreen_setup_screen_lock_setup">Konfiguracja</string>
 </resources>

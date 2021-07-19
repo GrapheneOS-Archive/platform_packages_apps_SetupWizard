@@ -46,5 +46,5 @@
     <string name="settings_lockscreen_setup_title">ეკრანის ჩამკეტის სახეობის არჩევა</string>
     <string name="settings_lockscreen_setup_details">როგორ გსურთ ეკრანის ჩაკეტვა?</string>
     <string name="lockscreen_setup_title" product="default">დაიცავით თქვენი ტელეფონი</string>
-    <string name="lockscreen_setup_summary"><b>დაიცავით მოწყობილობა</b> და ჩართეთ PIN-კოდის, მონახაზის ან პაროლის შეყვანის მოთხოვნა, ჩაკეტილი ეკრანის გასახსნელად</string>
+    <string name="lockscreen_setup_summary"><b>დაიცავით მოწყობილობა</b> და ჩართეთ PIN-კოდის ან პაროლის შეყვანის მოთხოვნა, ჩაკეტილი ეკრანის გასახსნელად</string>
 </resources>

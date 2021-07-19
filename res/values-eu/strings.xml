@@ -72,6 +72,6 @@
     <string name="settings_lockscreen_setup_title">Hautatu pantaila-blokeo mota</string>
     <string name="settings_lockscreen_setup_details">Nola blokeatu nahi duzu pantaila?</string>
     <string name="lockscreen_setup_title" product="default">Babestu telefonoa</string>
-    <string name="lockscreen_setup_summary"><b>Babestu gailua</b> eta eskatu PIN kode, eredu edo pasahitz bat pantaila desblokeatzeko</string>
+    <string name="lockscreen_setup_summary"><b>Babestu gailua</b> eta eskatu PIN kode edo pasahitz bat pantaila desblokeatzeko</string>
     <string name="lockscreen_setup_screen_lock_setup">Ezarri</string>
 </resources>

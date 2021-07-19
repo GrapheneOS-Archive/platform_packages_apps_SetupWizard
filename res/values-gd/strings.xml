@@ -73,6 +73,6 @@
     <string name="settings_lockscreen_setup_details">Dè an dòigh air am bu chaomh leat an sgrìn agad a ghlasadh?</string>
     <string name="lockscreen_setup_title" product="tablet">Dìon an tablaid agad</string>
     <string name="lockscreen_setup_title" product="default">Dìon am fòn agad</string>
-    <string name="lockscreen_setup_summary"><b>Dìon an t-uidheam seo</b> agus iarr PIN, pàtran no facal-faire gus a’ ghlas a thoirt far na sgrìn</string>
+    <string name="lockscreen_setup_summary"><b>Dìon an t-uidheam seo</b> agus iarr PIN no facal-faire gus a’ ghlas a thoirt far na sgrìn</string>
     <string name="lockscreen_setup_screen_lock_setup">Suidhich</string>
 </resources>

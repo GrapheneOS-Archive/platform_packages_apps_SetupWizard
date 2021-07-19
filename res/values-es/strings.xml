@@ -72,6 +72,6 @@
     <string name="settings_lockscreen_setup_title">Seleccione el tipo de bloqueo de la pantalla</string>
     <string name="settings_lockscreen_setup_details">¿Cómo quieres bloquear tu pantalla?</string>
     <string name="lockscreen_setup_title" product="default">Proteja su teléfono</string>
-    <string name="lockscreen_setup_summary"><b>Proteger este dispositivo</b> y establecer un PIN, un patrón o una contraseña para desbloquear la pantalla</string>
+    <string name="lockscreen_setup_summary"><b>Proteger este dispositivo</b> y establecer un PIN o una contraseña para desbloquear la pantalla</string>
     <string name="lockscreen_setup_screen_lock_setup">Configurar</string>
 </resources>

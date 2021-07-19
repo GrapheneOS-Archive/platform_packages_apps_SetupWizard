@@ -72,6 +72,6 @@
     <string name="settings_lockscreen_setup_title">Odaberite vrstu zaključavanja zaslona</string>
     <string name="settings_lockscreen_setup_details">Kako želite zaključati vaš zaslon?</string>
     <string name="lockscreen_setup_title" product="default">Zaštitite svoj telefon</string>
-    <string name="lockscreen_setup_summary"><b>Zaštiti uređaj</b> i zahtijevaj PIN, uzorak ili zaporku za otključavanje zaslona</string>
+    <string name="lockscreen_setup_summary"><b>Zaštiti uređaj</b> i zahtijevaj PIN ili zaporku za otključavanje zaslona</string>
     <string name="lockscreen_setup_screen_lock_setup">Postavljanje</string>
 </resources>
