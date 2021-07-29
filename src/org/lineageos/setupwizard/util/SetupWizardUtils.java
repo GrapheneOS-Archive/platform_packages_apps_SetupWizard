@@ -17,9 +17,6 @@
 
 package org.lineageos.setupwizard.util;
 
-import static android.app.StatusBarManager.DISABLE_NONE;
-import static android.app.StatusBarManager.DISABLE_NOTIFICATION_ALERTS;
-import static android.app.StatusBarManager.DISABLE_SEARCH;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
@@ -30,7 +27,6 @@ import static android.content.pm.PackageManager.GET_RECEIVERS;
 import static android.content.pm.PackageManager.GET_SERVICES;
 
 import static org.lineageos.setupwizard.SetupWizardApp.KEY_DETECT_CAPTIVE_PORTAL;
-import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
 
 import android.app.StatusBarManager;
 import android.content.ComponentName;
@@ -54,6 +50,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.google.android.setupcompat.util.WizardManagerHelper;
 import org.lineageos.setupwizard.BluetoothSetupActivity;
 import org.lineageos.setupwizard.ChooseDataSimActivity;
 import org.lineageos.setupwizard.BiometricActivity;
@@ -143,24 +140,13 @@ public class SetupWizardUtils {
         Settings.Global.putInt(context.getContentResolver(), KEY_DETECT_CAPTIVE_PORTAL, 1);
     }
 
-    public static void disableStatusBar(Context context) {
+    public static void setDisabledForSetup(Context context, boolean isDisabled) {
         StatusBarManager statusBarManager = context.getSystemService(StatusBarManager.class);
         if (statusBarManager != null) {
-            statusBarManager.disable(DISABLE_NOTIFICATION_ALERTS | DISABLE_SEARCH
-            );
+            statusBarManager.setDisabledForSetup(isDisabled);
         } else {
             Log.w(SetupWizardApp.TAG,
                     "Skip disabling notfications - could not get StatusBarManager");
-        }
-    }
-
-    public static void enableStatusBar(Context context) {
-        StatusBarManager statusBarManager = context.getSystemService(StatusBarManager.class);
-        if(statusBarManager != null) {
-            Log.i(SetupWizardApp.TAG, "Enabling notfications - StatusBarManager");
-            statusBarManager.disable(DISABLE_NONE);
-        } else {
-            Log.i(SetupWizardApp.TAG, "Skip enabling notfications - StatusBarManager is null");
         }
     }
 

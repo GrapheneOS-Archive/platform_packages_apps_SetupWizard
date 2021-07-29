@@ -19,10 +19,14 @@ package org.lineageos.setupwizard;
 
 
 import android.app.Application;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 
+import com.google.android.setupcompat.util.WizardManagerHelper;
 import org.lineageos.setupwizard.util.NetworkMonitor;
 import org.lineageos.setupwizard.util.PhoneMonitor;
 import org.lineageos.setupwizard.util.SetupWizardUtils;
@@ -92,6 +96,24 @@ public class SetupWizardApp extends Application {
         SetupWizardUtils.disableComponentsForMissingFeatures(this);
         SetupWizardUtils.setMobileDataEnabled(this, false);
         mHandler.postDelayed(mRadioTimeoutRunnable, SetupWizardApp.RADIO_READY_TIMEOUT);
+
+        //disable nav bar by default while setup is uncompleted enable it on complete
+        fixNavOptions();
+        ContentResolver contentResolver = getContentResolver();
+        contentResolver.registerContentObserver(
+                Settings.Secure.getUriFor(Settings.Secure.USER_SETUP_COMPLETE),
+                false,
+                new ContentObserver(new Handler(getMainLooper())) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        fixNavOptions();
+                    }
+                });
+    }
+
+    private void fixNavOptions() {
+        SetupWizardUtils.setDisabledForSetup(this, !WizardManagerHelper.isUserSetupComplete(this));
     }
 
     public boolean isRadioReady() {
