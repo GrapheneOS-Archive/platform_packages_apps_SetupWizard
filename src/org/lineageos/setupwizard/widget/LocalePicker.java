@@ -62,7 +62,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import libcore.icu.LocaleData;
 
 /**
  * A widget that enables the user to select a number form a predefined range.
@@ -150,59 +149,6 @@ public class LocalePicker extends LinearLayout {
      * Constant for unspecified size.
      */
     private static final int SIZE_UNSPECIFIED = -1;
-
-    /**
-     * Use a custom NumberPicker formatting callback to use two-digit minutes
-     * strings like "01". Keeping a static formatter etc. is the most efficient
-     * way to do this; it avoids creating temporary objects on every call to
-     * format().
-     */
-    private static class TwoDigitFormatter implements LocalePicker.Formatter {
-        final StringBuilder mBuilder = new StringBuilder();
-
-        char mZeroDigit;
-        java.util.Formatter mFmt;
-
-        final Object[] mArgs = new Object[1];
-
-        TwoDigitFormatter() {
-            final Locale locale = Locale.getDefault();
-            init(locale);
-        }
-
-        private void init(Locale locale) {
-            mFmt = createFormatter(locale);
-            mZeroDigit = getZeroDigit(locale);
-        }
-
-        public String format(int value) {
-            final Locale currentLocale = Locale.getDefault();
-            if (mZeroDigit != getZeroDigit(currentLocale)) {
-                init(currentLocale);
-            }
-            mArgs[0] = value;
-            mBuilder.delete(0, mBuilder.length());
-            mFmt.format("%02d", mArgs);
-            return mFmt.toString();
-        }
-
-        private static char getZeroDigit(Locale locale) {
-            return LocaleData.get(locale).zeroDigit;
-        }
-
-        private java.util.Formatter createFormatter(Locale locale) {
-            return new java.util.Formatter(mBuilder, locale);
-        }
-    }
-
-    private static final TwoDigitFormatter sTwoDigitFormatter = new TwoDigitFormatter();
-
-    /**
-     * @hide
-     */
-    public static final Formatter getTwoDigitFormatter() {
-        return sTwoDigitFormatter;
-    }
 
     /**
      * The increment button.
