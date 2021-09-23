@@ -118,6 +118,12 @@ public abstract class SubBaseActivity extends BaseSetupWizardActivity {
                 extras = data.getExtras();
             }
             Log.i(TAG, append.append(extras).append("}").toString());
+            if(requestCode == SetupWizardApp.REQUEST_CODE_SETUP_WIFI){
+                //WifiManager.ACTION_PICK_WIFI_NETWORK is always returning RESULT_CANCELED
+                //seems like broken api, will see on android 12
+                //this is a temp hack
+                mIsSubactivityNotFound = true;
+            }
             onSubactivityResult(requestCode, resultCode, data);
         } else if (resultCode == RESULT_CANCELED) {
             onStartSubactivity();
