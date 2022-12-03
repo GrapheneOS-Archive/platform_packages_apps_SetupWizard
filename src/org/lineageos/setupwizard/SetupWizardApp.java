@@ -37,7 +37,6 @@ public class SetupWizardApp extends Application {
             "android.settings.ACCESSIBILITY_SETTINGS_FOR_SUW";
     public static final String ACTION_SETUP_COMPLETE =
             "org.lineageos.setupwizard.LINEAGE_SETUP_COMPLETE";
-    public static final String ACTION_FINISHED = "org.lineageos.setupwizard.SETUP_FINISHED";
     public static final String ACTION_SETUP_WIFI = "android.settings.NETWORK_PROVIDER_SETTINGS";
     public static final String ACTION_SETUP_BIOMETRIC = "android.settings.BIOMETRIC_ENROLL";
     public static final String ACTION_SETUP_LOCKSCREEN = "com.android.settings.SETUP_LOCK_SCREEN";

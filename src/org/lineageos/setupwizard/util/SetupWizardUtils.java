@@ -189,9 +189,6 @@ public class SetupWizardUtils {
 
         disableComponent(context, WizardManager.class);
         disableHome(context);
-        context.sendStickyBroadcastAsUser(
-                new Intent(SetupWizardApp.ACTION_FINISHED),
-                Binder.getCallingUserHandle());
         disableComponentSets(context, GET_RECEIVERS | GET_SERVICES);
     }
 
