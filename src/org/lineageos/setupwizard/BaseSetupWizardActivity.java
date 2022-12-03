@@ -44,7 +44,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -310,7 +309,6 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
 
     protected void onSetupStart() {
         SetupWizardUtils.disableCaptivePortalDetection(getApplicationContext());
-        tryEnablingWifi();
     }
 
     protected void exitIfSetupComplete() {
@@ -476,14 +474,6 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
 
     protected int getTransition() {
         return TRANSITION_ID_SLIDE;
-    }
-
-    protected boolean tryEnablingWifi() {
-        WifiManager wifiManager = getSystemService(WifiManager.class);
-        if (wifiManager != null && !wifiManager.isWifiEnabled()) {
-            return wifiManager.setWifiEnabled(true);
-        }
-        return false;
     }
 
     private void startSetupWizardExitActivity() {
