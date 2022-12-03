@@ -27,5 +27,10 @@
         <permission name="android.permission.SET_TIME_ZONE"/>
         <permission name="android.permission.STATUS_BAR"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+        <permission name="android.permission.READ_WALLPAPER_INTERNAL"/>
+
+        <permission name="com.stevesoltys.seedvault.RESTORE_BACKUP"/>
+        <permission name="lineageos.permission.FINISH_SETUP" />
     </privapp-permissions>
 </permissions>

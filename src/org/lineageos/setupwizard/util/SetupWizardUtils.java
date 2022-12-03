@@ -29,6 +29,7 @@ import static android.content.pm.PackageManager.GET_SERVICES;
 import static org.lineageos.setupwizard.SetupWizardApp.KEY_DETECT_CAPTIVE_PORTAL;
 import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
 
+import android.Manifest;
 import android.app.StatusBarManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -51,6 +52,8 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import androidx.annotation.RequiresPermission;
 
 import org.lineageos.setupwizard.BiometricActivity;
 import org.lineageos.setupwizard.BluetoothSetupActivity;
@@ -86,6 +89,7 @@ public class SetupWizardUtils {
         }
     }
 
+    @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
     public static void setMobileDataEnabled(Context context, boolean enabled) {
         TelephonyManager tm = context.getSystemService(TelephonyManager.class);
         if (tm.isMultiSimEnabled()) {
