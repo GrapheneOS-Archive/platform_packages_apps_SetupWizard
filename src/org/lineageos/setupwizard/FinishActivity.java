@@ -40,6 +40,7 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.ImageView;
 
+import androidx.annotation.RequiresPermission;
 import com.google.android.setupcompat.util.SystemBarHelper;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
@@ -104,6 +105,7 @@ public class FinishActivity extends BaseSetupWizardActivity {
         finishSetup();
     }
 
+    @RequiresPermission(android.Manifest.permission.READ_WALLPAPER_INTERNAL)
     private void setupRevealImage() {
         final Point p = new Point();
         getWindowManager().getDefaultDisplay().getRealSize(p);
