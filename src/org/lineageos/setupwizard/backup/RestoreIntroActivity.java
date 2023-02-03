@@ -28,7 +28,6 @@ import android.widget.TextView;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 import static com.google.android.setupcompat.util.ResultCodes.RESULT_SKIP;
 
-import androidx.annotation.RequiresPermission;
 import org.lineageos.setupwizard.NavigationLayout;
 import org.lineageos.setupwizard.R;
 import org.lineageos.setupwizard.SubBaseActivity;
@@ -82,7 +81,6 @@ public class RestoreIntroActivity extends SubBaseActivity {
         return R.drawable.ic_restore;
     }
 
-    @RequiresPermission("com.stevesoltys.seedvault.RESTORE_BACKUP")
     private void launchRestore() {
         Intent intent = new Intent(ACTION_RESTORE_FROM_BACKUP);
         startSubactivity(intent, REQUEST_CODE_RESTORE);
