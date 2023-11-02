@@ -51,12 +51,12 @@
     <string name="yes">Ja</string>
     <string name="data_sim_name">SIM <xliff:g id="sub">%1$d</xliff:g> - <xliff:g id="name">%2$s</xliff:g></string>
     <string name="emergency_call">Notruf</string>
-    <string name="setup_services">GrapheneOS-Funktionen</string>
-    <string name="services_explanation" product="tablet">Diese Dienste werden verwendet, um die Funktionen deines Tablets zu erweitern. Deine Daten werden in Übereinstimmung mit der <xliff:g id="name" example="Datenschutzerklärung">%s</xliff:g> von GrapheneOS verwendet.</string>
-    <string name="services_explanation" product="default">Diese Dienste werden verwendet, um die Funktionen deines Telefons zu erweitern. Deine Daten werden in Übereinstimmung mit der <xliff:g id="name" example="Datenschutzerklärung">%s</xliff:g> von GrapheneOS verwendet.</string>
+    <string name="setup_services">OdysseyOS-Funktionen</string>
+    <string name="services_explanation" product="tablet">Diese Dienste werden verwendet, um die Funktionen deines Tablets zu erweitern. Deine Daten werden in Übereinstimmung mit der <xliff:g id="name" example="Datenschutzerklärung">%s</xliff:g> von OdysseyOS verwendet.</string>
+    <string name="services_explanation" product="default">Diese Dienste werden verwendet, um die Funktionen deines Telefons zu erweitern. Deine Daten werden in Übereinstimmung mit der <xliff:g id="name" example="Datenschutzerklärung">%s</xliff:g> von OdysseyOS verwendet.</string>
     <string name="services_privacy_policy">Datenschutzerklärung</string>
-    <string name="services_help_improve_cm">Hilf <xliff:g id="name" example="GrapheneOS">%s</xliff:g> zu verbessern</string>
-    <string name="services_metrics_label"><xliff:g id="name" example="Hilf GrapheneOS zu verbessern">%1$s</xliff:g>, indem du automatisch Diagnose- und Nutzungsdaten an GrapheneOS sendest. Diese Informationen können nicht dazu verwendet werden, dich zu identifizieren. Vielmehr helfen sie unserem Team bei der Arbeit an Dingen wie der Akkulaufzeit, der App-Leistung und <xliff:g id="name" example="GrapheneOS">%2$s</xliff:g>-Funktionen.</string>
+    <string name="services_help_improve_cm">Hilf <xliff:g id="name" example="OdysseyOS">%s</xliff:g> zu verbessern</string>
+    <string name="services_metrics_label"><xliff:g id="name" example="Hilf OdysseyOS zu verbessern">%1$s</xliff:g>, indem du automatisch Diagnose- und Nutzungsdaten an OdysseyOS sendest. Diese Informationen können nicht dazu verwendet werden, dich zu identifizieren. Vielmehr helfen sie unserem Team bei der Arbeit an Dingen wie der Akkulaufzeit, der App-Leistung und <xliff:g id="name" example="OdysseyOS">%2$s</xliff:g>-Funktionen.</string>
     <string name="services_os_nav_keys_label"><b>Bildschirm-Navigationstasten</b> statt Hardwaretasten verwenden.</string>
     <string name="setup_unlock">Entsperren</string>
     <string name="setup_device_locked">Dieses Gerät wurde vom Benutzer gesperrt.</string>
@@ -80,8 +80,8 @@
     <string name="lockscreen_setup_summary"><b>Gerät schützen</b> und PIN, Muster oder Passwort zur Display-Entsperrung verwenden</string>
     <string name="lockscreen_setup_screen_lock_setup">Einrichten</string>
     <string name="intro_restore_title">Apps und Daten wiederherstellen</string>
-    <string name="intro_restore_subtitle" product="tablet">Wenn du eine Datensicherung von deinem letzten GrapheneOS-Tablet hast, kannst du sie hier wiederherstellen.</string>
-    <string name="intro_restore_subtitle" product="default">Wenn du eine Datensicherung von deinem letzten GrapheneOS- Telefon hast, kannst du sie hier wiederherstellen.</string>
+    <string name="intro_restore_subtitle" product="tablet">Wenn du eine Datensicherung von deinem letzten OdysseyOS-Tablet hast, kannst du sie hier wiederherstellen.</string>
+    <string name="intro_restore_subtitle" product="default">Wenn du eine Datensicherung von deinem letzten OdysseyOS- Telefon hast, kannst du sie hier wiederherstellen.</string>
     <string name="intro_restore_button">Aus Backup wiederherstellen</string>
     <string name="update_recovery_title">Lineage-Recovery aktualisieren</string>
     <string name="update_recovery_description">Aktualisiert das Lineage-Recovery-Image beim ersten Start nach jedem Update.</string>

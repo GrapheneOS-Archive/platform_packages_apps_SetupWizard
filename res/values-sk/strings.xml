@@ -51,12 +51,12 @@
     <string name="yes">Áno</string>
     <string name="data_sim_name">SIM <xliff:g id="sub">%1$d</xliff:g> - <xliff:g id="name">%2$s</xliff:g></string>
     <string name="emergency_call">Tiesňový hovor</string>
-    <string name="setup_services">GrapheneOS funkcie</string>
-    <string name="services_explanation" product="tablet">Tieto služby sú určené pre vás a rozširujú možnosti vášho tabletu. Údaje sa použijú v súlade s GrapheneOS\'s <xliff:g id="name" example="Privacy Policy">%s</xliff:g>.</string>
-    <string name="services_explanation" product="default">Tieto služby sú určené pre vás a rozširujú možnosti vášho telefónu. Údaje sa použijú v súlade s GrapheneOS\'s <xliff:g id="name" example="Privacy Policy">%s</xliff:g>.</string>
+    <string name="setup_services">OdysseyOS funkcie</string>
+    <string name="services_explanation" product="tablet">Tieto služby sú určené pre vás a rozširujú možnosti vášho tabletu. Údaje sa použijú v súlade s OdysseyOS\'s <xliff:g id="name" example="Privacy Policy">%s</xliff:g>.</string>
+    <string name="services_explanation" product="default">Tieto služby sú určené pre vás a rozširujú možnosti vášho telefónu. Údaje sa použijú v súlade s OdysseyOS\'s <xliff:g id="name" example="Privacy Policy">%s</xliff:g>.</string>
     <string name="services_privacy_policy">Ochrana osobných údajov</string>
-    <string name="services_help_improve_cm">Pomôžte vylepšiť <xliff:g id="name" example="GrapheneOS">%s</xliff:g></string>
-    <string name="services_metrics_label"><xliff:g id="name" example="Help improve GrapheneOS">%1$s</xliff:g> automatickým zasielaním diagnostických údajov a údajov o používaní do GrapheneOS. Tieto informácie sa nepoužijú na vašu identifikáciu, ale pomôžu tímom pracujúcim na výdrži, výkone aplikácií a nových funkciách <xliff:g id="name" example="GrapheneOS">%2$s</xliff:g>.</string>
+    <string name="services_help_improve_cm">Pomôžte vylepšiť <xliff:g id="name" example="OdysseyOS">%s</xliff:g></string>
+    <string name="services_metrics_label"><xliff:g id="name" example="Help improve OdysseyOS">%1$s</xliff:g> automatickým zasielaním diagnostických údajov a údajov o používaní do OdysseyOS. Tieto informácie sa nepoužijú na vašu identifikáciu, ale pomôžu tímom pracujúcim na výdrži, výkone aplikácií a nových funkciách <xliff:g id="name" example="OdysseyOS">%2$s</xliff:g>.</string>
     <string name="services_os_nav_keys_label"><b>Používajte navigačné tlačidlá na obrazovke</b> namiesto hardvérových tlačidiel.</string>
     <string name="setup_unlock">Odomknúť</string>
     <string name="setup_device_locked">Toto zariadenie bolo uzamknuté používateľom.</string>
@@ -80,8 +80,8 @@
     <string name="lockscreen_setup_summary"><b>Chrániť toto zariadenie</b> a pred odomknutím obrazovky vyžiadať kód PIN, gesto alebo heslo</string>
     <string name="lockscreen_setup_screen_lock_setup">Nastaviť</string>
     <string name="intro_restore_title">Obnoviť aplikácie a dáta</string>
-    <string name="intro_restore_subtitle" product="tablet">Ak máte zálohu zo svojho predošlého tabletu s GrapheneOS, môžete ju obnoviť tu.</string>
-    <string name="intro_restore_subtitle" product="default">Ak máte zálohu zo svojho predošlého telefónu s GrapheneOS, môžete ju obnoviť tu.</string>
+    <string name="intro_restore_subtitle" product="tablet">Ak máte zálohu zo svojho predošlého tabletu s OdysseyOS, môžete ju obnoviť tu.</string>
+    <string name="intro_restore_subtitle" product="default">Ak máte zálohu zo svojho predošlého telefónu s OdysseyOS, môžete ju obnoviť tu.</string>
     <string name="intro_restore_button">Obnoviť zo záloh</string>
     <string name="update_recovery_title">Aktualizovať Lineage recovery</string>
     <string name="update_recovery_description">Aktualizovať Lineage recovery pri prvom spustení po každej aktualizácii</string>
